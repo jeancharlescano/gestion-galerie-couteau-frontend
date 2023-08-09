@@ -1,31 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+import Santoku from "../assets/img/knifes/couteau-japonais-santoku-19-cm-kai-shun-classic-damas.jpg";
+import KnifeCard from "../components/KnifeCard";
 
 const GalleryScreen = () => {
+  const knifesArr = [{ id: 0, title: "santoku", img: Santoku }];
+
   return (
-    <div className="h-screen bg-main-black p-4 grid content-start justify-items-center bg-center grid-cols-3 gap-y-32">
-      <div className="w-5/6 h-96 text-white border-gold border-2 rounded-xl flex flex-col justify-center">
-        <div className="h-2/3 w-full border-b-2 border-gold"></div>
-        <div className="w-1/3"></div>
+    <div className=" min-h-screen h-auto bg-main-black p-4">
+      <div className="h-24 flex items-center justify-end">
+        <Link to="/knife/add" className="border-2 rounded-lg border-gold text-gold  flex items-center justify-center font-extrabold p-2 hover:border-none hover:bg-gold hover:text-main-black"><p>Nouveau</p></Link>
       </div>
-      <div className="w-5/6 h-96 text-white border-gold border-2 rounded-xl flex flex-col justify-center">
-        <div className="h-2/3 w-full border-b-2 border-gold"></div>
-        <div className="w-1/3"></div>
-      </div>
-      <div className="w-5/6 h-96 text-white border-gold border-2 rounded-xl flex flex-col justify-center">
-        <div className="h-2/3 w-full border-b-2 border-gold"></div>
-        <div className="w-1/3"></div>
-      </div>
-      <div className="w-5/6 h-96 text-white border-gold border-2 rounded-xl flex flex-col justify-center">
-        <div className="h-2/3 w-full border-b-2 border-gold"></div>
-        <div className="w-1/3"></div>
-      </div>
-      <div className="w-5/6 h-96 text-white border-gold border-2 rounded-xl flex flex-col justify-center">
-        <div className="h-2/3 w-full border-b-2 border-gold"></div>
-        <div className="w-1/3"></div>
-      </div>
-      <div className="w-5/6 h-96 text-white border-gold border-2 rounded-xl flex flex-col justify-center">
-        <div className="h-2/3 w-full border-b-2 border-gold"></div>
-        <div className="w-1/3"></div>
+      <div className="  grid content-start justify-items-center bg-center grid-cols-3 gap-y-16">
+        {knifesArr.map((knife) => (
+          <KnifeCard knife={knife}></KnifeCard>
+        ))}
+        
       </div>
     </div>
   );

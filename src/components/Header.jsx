@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Header = () => {
-  const [activeNavItem, setActiveNavItem] = useState(0);
+const Header = ({activeNav}) => {
+  const [activeNavItem, setActiveNavItem] = useState(activeNav);
 
   const handleNavItemClick = (index) => {
     setActiveNavItem(index);
@@ -16,7 +16,7 @@ const Header = () => {
   ];
 
   return (
-    <div  className="h-14 bg-main-black flex">
+    <div className="h-14 bg-main-black flex">
       <div className="w-1/3 flex justify-center items-center">Logo</div>
       <nav className="w-2/3 flex justify-center items-center">
         <div className="w-full h-full">
@@ -24,7 +24,7 @@ const Header = () => {
             {navItems.map((item, index) => (
               <li
                 key={index}
-                className={`relative hover:border-b-2 ${
+                className={`relative hover:border-b-2 hover:border-gold ${
                   activeNavItem === index ? "active" : ""
                 }`}
                 onClick={() => handleNavItemClick(index)}

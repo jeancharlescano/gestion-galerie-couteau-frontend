@@ -11,6 +11,9 @@ module.exports = {
       colors: {
         'main-black': '#181717',
         'gold': '#987252'
+      },
+      fontFamily: {
+        'knife-title': 'The Nautigal'
       }
     },
   },
