@@ -5,7 +5,7 @@ import Santoku from "../assets/img/knifes/couteau-japonais-santoku-19-cm-kai-shu
 import KnifeCard from "../components/KnifeCard";
 
 const GalleryScreen = () => {
-  const knifesArr = [{ id: 0, title: "santoku", img: Santoku }];
+  const knifesArr = [{ id: 0, title: "santoku", img: Santoku, materialBlade:"acier VG10/damasse", bladeSize: 19, materialHandle: "pakkawood", handleSize: 32-19, knifeDesc: "Avec sa lame de 19 cm, ce modèle de couteau japonais Santoku est le plus grand proposé par la marque Kai. En effet, la gamme Shun Classic propose plusieurs tailles de couteaux japonais Santoku (14,7 et 18,6). Celui-ci possède une lame très haute et lui permet d'être encore plus performant sur les émincés sur planche." }];
 
   return (
     <div className=" min-h-screen h-auto bg-main-black p-4">

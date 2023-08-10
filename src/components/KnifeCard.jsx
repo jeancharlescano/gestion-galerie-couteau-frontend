@@ -7,7 +7,7 @@ const KnifeCard = ({ knife }) => {
   return (
     <div
       key={knife.id}
-      onClick={() => navigate(`/gallery/${knife.id}`)}
+      onClick={() => navigate(`/gallery/${knife.id}`,  { state: { knifeValues: knife } })}
       className="w-11/12 transition-all h-96 cursor-pointer text-white border-gold border-2 rounded-xl flex flex-col justify-center hover:scale-105 group"
     >
       <div className="h-4/6 w-full border-b-2 border-gold relative ">

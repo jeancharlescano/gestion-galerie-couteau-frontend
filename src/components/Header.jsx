@@ -20,7 +20,7 @@ const Header = ({activeNav}) => {
       <div className="w-1/3 flex justify-center items-center">Logo</div>
       <nav className="w-2/3 flex justify-center items-center">
         <div className="w-full h-full">
-          <ul className="flex content-center items-center font-large  justify-between w-full h-full">
+          <ul className="flex content-center items-center justify-between w-full h-full">
             {navItems.map((item, index) => (
               <li
                 key={index}
@@ -31,7 +31,7 @@ const Header = ({activeNav}) => {
               >
                 <Link
                   to={item.to}
-                  className="text-white font-semibold"
+                  className="text-white font-semibold text-xl"
                   aria-current="page"
                 >
                   {item.label}
