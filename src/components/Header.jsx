@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link, useNavigate } from "react-router-dom";
+import { faUser } from "@fortawesome/free-regular-svg-icons";
 
-const Header = ({activeNav}) => {
-  const [activeNavItem, setActiveNavItem] = useState(activeNav);
-
-  const handleNavItemClick = (index) => {
-    setActiveNavItem(index);
-  };
+const Header = ({ activeNav }) => {
+  const navigate = useNavigate();
 
   const navItems = [
     { label: "Home", to: "/" },
@@ -25,9 +23,8 @@ const Header = ({activeNav}) => {
               <li
                 key={index}
                 className={`relative hover:border-b-2 hover:border-gold ${
-                  activeNavItem === index ? "active" : ""
+                  activeNav === index ? "active" : ""
                 }`}
-                onClick={() => handleNavItemClick(index)}
               >
                 <Link
                   to={item.to}
@@ -41,8 +38,12 @@ const Header = ({activeNav}) => {
           </ul>
         </div>
       </nav>
-      <div className="w-1/3 flex justify-end  items-center">
-        <p className=" m-8">toto</p>
+      <div className="w-1/3 flex justify-end items-center pr-8">
+        <FontAwesomeIcon
+          icon={faUser}
+          className="h-10 w-10  cursor-pointer text-white hover:text-gold"
+          onClick={() => navigate("/login")}
+        ></FontAwesomeIcon>
       </div>
     </div>
   );

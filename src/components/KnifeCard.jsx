@@ -12,14 +12,14 @@ const KnifeCard = ({ knife }) => {
     >
       <div className="h-4/6 w-full border-b-2 border-gold relative ">
         <img
-          src={knife.img}
+          src={`data:image/jpeg;base64, ${knife.img}`}
           alt=""
           className="absolute top-0 left-0 w-full h-full object-cover rounded-t-xl"
         />
       </div>
       <div className="h-2/6 flex justify-center items-center">
         <p className="text-4xl text-white font-bold group-hover:underline ">
-          {knife.title.toUpperCase()}
+          {knife.name.toUpperCase()}
         </p>
       </div>
     </div>

@@ -1,10 +1,12 @@
-import React from 'react'
-
+import React from "react";
+import Header from "../components/Header";
 const ContactScreen = () => {
   return (
-    <>Contact Screen</>
+    <>
+      <Header activeNav={3} />
+      Contact Screen
+    </>
+  );
+};
 
-  )
-}
-
-export default ContactScreen
+export default ContactScreen;

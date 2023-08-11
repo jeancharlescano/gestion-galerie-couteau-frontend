@@ -1,42 +1,29 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "./App.css";
-import Header from "./components/Header";
 import HomeScreen from "./screens/HomeScreen";
-import Gallery from "./screens/GalleryScreen";
+import GalleryScreen from "./screens/GalleryScreen";
 import DetailKnife from "./screens/DetailKnife";
-import Service from "./screens/ServiceScreen";
-import Contact from "./screens/ContactScreen";
 import AddKnife from "./screens/AddKnife";
+import ServiceScreen from "./screens/ServiceScreen";
+import ContactScreen from "./screens/ContactScreen";
+import LoginScreen from "./screens/LoginScreen";
+
+import { Route, Routes } from "react-router-dom";
 
 function App() {
-  const checkUrl = () => {
-    if (window.location.href.includes("gallery")) {
-      return 1;
-    }
-    if (window.location.href.includes("service")) {
-      return 2;
-    }
-    if (window.location.href.includes("contact")) {
-      return 3;
-    } else {
-      return 0;
-    }
-  };
-
   return (
-    <BrowserRouter>
-      <Header activeNav={checkUrl()} />
+    <div>
       <Routes>
-        <Route path="/" exact Component={HomeScreen} />
-        <Route path="/gallery" Component={Gallery}></Route>
-        <Route path="/gallery/:id" Component={DetailKnife} />
-        <Route path="/knife/add" Component={AddKnife} />
-        <Route path="/service" Component={Service} />
-        <Route path="/contact" Component={Contact} />
+        <Route path="/" element={<HomeScreen />} />
+        <Route path="/gallery" element={<GalleryScreen />} />
+        <Route path="/gallery/:id" element={<DetailKnife />} />
+        <Route path="/knife/add" element={<AddKnife />} />
+        <Route path="/service" element={<ServiceScreen />} />
+        <Route path="/contact" element={<ContactScreen />} />
+        <Route path="/login" element={<LoginScreen />} />
       </Routes>
-    </BrowserRouter>
+    </div>
   );
 }
 
