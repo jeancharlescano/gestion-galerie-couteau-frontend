@@ -9,7 +9,7 @@ module.exports = {
         'fire-img': "url('/src/assets/img/gestionGallerieCouteau.jpg')"
       },
       colors: {
-        'main-black': '#181717',
+        'main-black': '#232C33',
         'black-lighter': '#262424',
         'gold': '#987252'
       },

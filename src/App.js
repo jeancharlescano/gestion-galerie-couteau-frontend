@@ -1,6 +1,8 @@
 import React from "react";
 
 import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import PrivateRoute from "./utilities/PrivateRoute";
 import HomeScreen from "./screens/HomeScreen";
 import GalleryScreen from "./screens/GalleryScreen";
 import DetailKnife from "./screens/DetailKnife";
@@ -9,21 +11,19 @@ import ServiceScreen from "./screens/ServiceScreen";
 import ContactScreen from "./screens/ContactScreen";
 import LoginScreen from "./screens/LoginScreen";
 
-import { Route, Routes } from "react-router-dom";
-
 function App() {
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<HomeScreen />} />
-        <Route path="/gallery" element={<GalleryScreen />} />
-        <Route path="/gallery/:id" element={<DetailKnife />} />
+    <Routes>
+      <Route path="/" element={<HomeScreen />} />
+      <Route path="/gallery" element={<GalleryScreen />} />
+      <Route path="/gallery/:id" element={<DetailKnife />} />
+      <Route path="/knife" element={<PrivateRoute />}>
         <Route path="/knife/add" element={<AddKnife />} />
-        <Route path="/service" element={<ServiceScreen />} />
-        <Route path="/contact" element={<ContactScreen />} />
-        <Route path="/login" element={<LoginScreen />} />
-      </Routes>
-    </div>
+      </Route>
+      <Route path="/service" element={<ServiceScreen />} />
+      <Route path="/contact" element={<ContactScreen />} />
+      <Route path="/login" element={<LoginScreen />} />
+    </Routes>
   );
 }
 

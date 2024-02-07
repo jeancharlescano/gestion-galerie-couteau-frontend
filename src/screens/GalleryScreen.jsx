@@ -15,6 +15,8 @@ const GalleryScreen = () => {
 
   if (error)
     return (
+    <>
+      <Header activeNav={1} />
       <div className=" min-h-screen h-[calc(100vh-56px)] bg-main-black p-4">
         <div className="h-24 flex items-center justify-end">
           <Link
@@ -28,6 +30,7 @@ const GalleryScreen = () => {
           <div>failed to load</div>
         </div>
       </div>
+    </>
     );
   if (!data) {
     console.log(
