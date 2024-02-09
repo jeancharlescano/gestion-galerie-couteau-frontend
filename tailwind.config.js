@@ -18,6 +18,7 @@ module.exports = {
       animation: {
         "slide-right": "slideRight 1s ease forwards",
         "slide-top": "slideTop 1s .4s ease forwards",
+        "zoom-in": "zoomIn 1s ease forwards"
       },
       keyframes: {
         slideRight: {
@@ -37,6 +38,16 @@ module.exports = {
           },
           "100%": {
             transform: "translateX(0)",
+            opacity: 1,
+          },
+        },
+        zoomIn: {
+          "0%": {
+            transform: "scale(0)",
+            opacity: 0,
+          },
+          "100%": {
+            transform: "scale(1)",
             opacity: 1,
           },
         },

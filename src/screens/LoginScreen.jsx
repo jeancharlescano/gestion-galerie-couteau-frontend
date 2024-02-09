@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom/dist";
 
-import logoNOBg from "../assets/img/logoNOBg.png" 
+import logoNOBg from "../assets/img/logoNOBg.png";
 
 const LoginScreen = () => {
-
   const login = () => {
     // Ajoutez votre logique de connexion ici
   };
@@ -33,7 +32,9 @@ const LoginScreen = () => {
                       </h4>
                     </div>
                     <form>
-                      <p className="mb-4 text-white">Veuillez vous connecter à votre compte</p>
+                      <p className="mb-4 text-white">
+                        Veuillez vous connecter à votre compte
+                      </p>
                       <div className="mb-4">
                         <input
                           type="email"
@@ -53,7 +54,7 @@ const LoginScreen = () => {
                         />
                       </div>
                       <div className="text-center pt-1 pb-1">
-                      <button
+                        <button
                           className="inline-block px-6 py-2.5 text-black font-medium text-xs leading-tight uppercase bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] rounded shadow-md hover:text-white hover:bg-transparent focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
                           type="button"
                           onClick={login}
@@ -62,7 +63,9 @@ const LoginScreen = () => {
                         </button>
                       </div>
                       <div className="flex flex-col items-center justify-between pb-6 lg:pb-0">
-                        <p className="mb-2 text-white hover:underline cursor-pointer">Pas encore de compte ?</p>
+                        <p className="mb-2 text-white hover:underline cursor-pointer">
+                          Pas encore de compte ?
+                        </p>
                         <Link
                           to="/register"
                           className="inline-block px-6 py-2 border-2 border-[#AF7E39] text-[#AF7E39] font-medium text-xs leading-tight uppercase rounded  hover:bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] hover:text-black hover:border-none focus:outline-none focus:ring-0 transition duration-150 ease-in-out"

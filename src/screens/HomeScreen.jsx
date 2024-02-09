@@ -5,6 +5,9 @@ import "./HomeScreen.css";
 
 import logoNoBg from "../assets/img/logoNOBg.png";
 import forging from "../assets/img/forging.jpeg";
+import daozi from "../assets/img/knifes/machoir.jpg";
+import chief from '../assets/img/knifes/chief.jpg'
+import { Link } from "react-router-dom";
 
 const HomeScreen = () => {
   return (
@@ -51,22 +54,51 @@ const HomeScreen = () => {
         className="flex items-center px-[15%] py-[5%] h-screen bg-main-black-lighter"
       >
         <div className="flex items-center justify-between h-full w-full">
-          <div className="w-1/2 h-3/4 ">
-            <div className="flex h-1/2">
-              <div className=" w-1/2 h-full ">{/* img ici */}</div>
-              <div className=" w-1/2 h-full ">{/* img ici */}</div>
+          <div className="w-96 h-96 shadow-gray-900 shadow-xl animate-zoom-in">
+            <div className="flex h-1/2 ">
+              <div className=" w-1/2 h-full mb-1 mr-1 overflow-hidden rounded-lg animate-zoom-in">
+                <img
+                  className="w-full h-full object-contain"
+                  src={daozi}
+                  alt="daozi"
+                />
+              </div>
+              <div className=" w-1/2 h-full mb-1 ml-1 overflow-hidden rounded-lg animate-zoom-in">
+                <img
+                  className="w-full h-full object-contain"
+                  src={chief}
+                  alt="chief"
+                />
+              </div>
             </div>
-            <div className="h-1/2">
-              <div className=" w-1/2 h-full ">{/* img ici */}</div>
-              <div className=" w-1/2 h-full ">{/* img ici */}</div>
+            <div className="flex h-1/2">
+              <div className=" w-1/2 h-full mt-1 mr-1 overflow-hidden rounded-lg animate-zoom-in">
+                <img
+                  className="w-full h-full object-contain"
+                  src={chief}
+                  alt="daozi"
+                />
+              </div>
+              <div className=" w-1/2 h-full mt-1 ml-1 overflow-hidden rounded-lg animate-zoom-in">
+                <img
+                  className="w-full h-full object-contain"
+                  src={daozi}
+                  alt="daozi"
+                />
+              </div>
             </div>
           </div>
-          <p className="w-1/2 pl-[10%] text-right text-white text-xl font-semibold animate-slide-right">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. At
-            exercitationem rerum autem repudiandae nam alias amet facere iste.
-            Cupiditate eos dignissimos cumque tempore, illo in deleniti fugit
-            nesciunt quidem quasi!
-          </p>
+          <div className="w-1/2 h-[50%] pl-[10%] flex justify-evenly  flex-col items-center">
+            <p className="text-right text-white text-xl font-semibold animate-slide-right">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. At
+              exercitationem rerum autem repudiandae nam alias amet facere iste.
+              Cupiditate eos dignissimos cumque tempore, illo in deleniti fugit
+              nesciunt quidem quasi!
+            </p>
+            <Link to="/gallery" className=" px-14 text-black font-medium text-md uppercase bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] rounded shadow-md hover:text-white hover:bg-transparent">
+              gallery
+            </Link>
+          </div>
         </div>
       </div>
     </div>
