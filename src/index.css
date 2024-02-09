@@ -1,20 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=The+Nautigal:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=The+Nautigal:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -27,7 +27,29 @@ input[type="number"] {
   -moz-appearance: textfield; /* Firefox support */
 }
 
-
 .font {
-  font-family: 'Alex Brush', cursive;
+  font-family: "Alex Brush", cursive;
+}
+
+.avatar {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 0;
+}
+.avatar:before {
+  width: 86px;
+  aspect-ratio: 1;
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  padding: 3px;
+  border-radius: 100%;
+  background: linear-gradient(to right, #af7e39, #ffedd4);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
 }
