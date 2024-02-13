@@ -1,25 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
-import "./HomeScreen.css";
+import ScrollReveal from "scrollreveal";
 
 import logoNoBg from "../assets/img/logoNOBg.png";
 import forging from "../assets/img/forging.jpeg";
 import daozi from "../assets/img/knifes/machoir.jpg";
-import chief from '../assets/img/knifes/chief.jpg'
+import chief from "../assets/img/knifes/chief.jpg";
 import { Link } from "react-router-dom";
 
 const HomeScreen = () => {
+  useEffect(() => {
+    const sr = ScrollReveal();
+    sr.reveal(
+      "#knifes",
+      {
+        duration: 30000,
+        reset: true,
+      },
+      5000
+    );
+  }, []);
+
   return (
     <div>
       <div className="h-screen bg-fire-img bg-no-repeat bg-cover bg-main-black bg-center">
         <div className="absolute top-[10%] left-[50%] -translate-x-1/2">
-          <p className="font text-white font-medium text-7xl tracking-widest">
+          <p
+            id="toto"
+            className="font text-white font-medium text-7xl tracking-widest"
+          >
             Coutellerie Tony
           </p>
           <img src={logoNoBg} alt="" />
         </div>
         <div className="absolute bottom-5 flex items-center justify-center h-auto w-full">
+          {/* <a href="#pres" onClick={(e) => scrollToSection(e, '#pres')} className="animate-bounce avatar "> */}
           <a href="#pres" className="animate-bounce avatar ">
             <FontAwesomeIcon
               icon={faArrowDown}
@@ -54,16 +70,22 @@ const HomeScreen = () => {
         className="flex items-center px-[15%] py-[5%] h-screen bg-main-black-lighter"
       >
         <div className="flex items-center justify-between h-full w-full">
-          <div className="w-96 h-96 shadow-gray-900 shadow-xl animate-zoom-in">
+          <div className="w-96 h-96">
             <div className="flex h-1/2 ">
-              <div className=" w-1/2 h-full mb-1 mr-1 overflow-hidden rounded-lg animate-zoom-in">
+              <div
+                id="knifes"
+                className=" w-1/2 h-full mb-1 mr-1 overflow-hidden rounded-lg"
+              >
                 <img
                   className="w-full h-full object-contain"
                   src={daozi}
                   alt="daozi"
                 />
               </div>
-              <div className=" w-1/2 h-full mb-1 ml-1 overflow-hidden rounded-lg animate-zoom-in">
+              <div
+                id="knifes"
+                className=" w-1/2 h-full mb-1 ml-1 overflow-hidden rounded-lg"
+              >
                 <img
                   className="w-full h-full object-contain"
                   src={chief}
@@ -71,15 +93,18 @@ const HomeScreen = () => {
                 />
               </div>
             </div>
-            <div className="flex h-1/2">
-              <div className=" w-1/2 h-full mt-1 mr-1 overflow-hidden rounded-lg animate-zoom-in">
+            <div id="knifes" className="flex h-1/2">
+              <div className=" w-1/2 h-full mt-1 mr-1 overflow-hidden rounded-lg">
                 <img
                   className="w-full h-full object-contain"
                   src={chief}
                   alt="daozi"
                 />
               </div>
-              <div className=" w-1/2 h-full mt-1 ml-1 overflow-hidden rounded-lg animate-zoom-in">
+              <div
+                id="knifes"
+                className=" w-1/2 h-full mt-1 ml-1 overflow-hidden rounded-lg"
+              >
                 <img
                   className="w-full h-full object-contain"
                   src={daozi}
@@ -95,7 +120,10 @@ const HomeScreen = () => {
               Cupiditate eos dignissimos cumque tempore, illo in deleniti fugit
               nesciunt quidem quasi!
             </p>
-            <Link to="/gallery" className=" px-14 text-black font-medium text-md uppercase bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] rounded shadow-md hover:text-white hover:bg-transparent">
+            <Link
+              to="/gallery"
+              className=" px-14 text-black font-medium text-md uppercase bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] rounded shadow-md hover:text-white hover:bg-transparent"
+            >
               gallery
             </Link>
           </div>
