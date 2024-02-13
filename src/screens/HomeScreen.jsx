@@ -1,24 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import ScrollReveal from "scrollreveal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
-import ScrollReveal from "scrollreveal";
 
 import logoNoBg from "../assets/img/logoNOBg.png";
 import forging from "../assets/img/forging.jpeg";
 import daozi from "../assets/img/knifes/machoir.jpg";
 import chief from "../assets/img/knifes/chief.jpg";
+import hache from "../assets/img/knifes/hache.jpg";
 import { Link } from "react-router-dom";
 
+import AuthContext from "../context/authContext";
+
 const HomeScreen = () => {
+  let { user } = useContext(AuthContext);
+  console.log("🚀 ~ HomeScreen ~ user:", user);
   useEffect(() => {
     const sr = ScrollReveal();
     sr.reveal(
       "#knifes",
       {
-        duration: 30000,
+        duration: 3000,
         reset: true,
       },
-      5000
+      100
     );
   }, []);
 
@@ -30,7 +35,7 @@ const HomeScreen = () => {
             id="toto"
             className="font text-white font-medium text-7xl tracking-widest"
           >
-            Coutellerie Tony
+            Coutellerie Tony, hello {user}
           </p>
           <img src={logoNoBg} alt="" />
         </div>
@@ -93,8 +98,11 @@ const HomeScreen = () => {
                 />
               </div>
             </div>
-            <div id="knifes" className="flex h-1/2">
-              <div className=" w-1/2 h-full mt-1 mr-1 overflow-hidden rounded-lg">
+            <div className="flex h-1/2">
+              <div
+                id="knifes"
+                className=" w-1/2 h-full mt-1 mr-1 overflow-hidden rounded-lg"
+              >
                 <img
                   className="w-full h-full object-contain"
                   src={chief}
@@ -107,7 +115,7 @@ const HomeScreen = () => {
               >
                 <img
                   className="w-full h-full object-contain"
-                  src={daozi}
+                  src={hache}
                   alt="daozi"
                 />
               </div>

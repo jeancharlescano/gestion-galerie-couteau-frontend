@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom/dist";
 
 import logoNOBg from "../assets/img/logoNOBg.png";
+import AuthContext from "../context/authContext";
 
 const LoginScreen = () => {
+  let { loginUser } = useContext(AuthContext);
   const login = () => {
     // Ajoutez votre logique de connexion ici
   };
@@ -31,7 +33,7 @@ const LoginScreen = () => {
                         Coutellerie Tony
                       </h4>
                     </div>
-                    <form>
+                    <form onSubmit={loginUser}>
                       <p className="mb-4 text-white">
                         Veuillez vous connecter à votre compte
                       </p>
@@ -56,7 +58,7 @@ const LoginScreen = () => {
                       <div className="text-center pt-1 pb-1">
                         <button
                           className="inline-block px-6 py-2.5 text-black font-medium text-xs leading-tight uppercase bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] rounded shadow-md hover:text-white hover:bg-transparent focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
-                          type="button"
+                          type="submit"
                           onClick={login}
                         >
                           Se connecter
