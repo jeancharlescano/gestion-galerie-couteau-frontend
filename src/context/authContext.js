@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 const AuthContext = createContext();
 
 export default AuthContext;
@@ -7,6 +8,12 @@ export default AuthContext;
 export const AuthProvider = ({ children }) => {
   const [authTokens, setAuthTokens] = useState(null);
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log("🚀 ~ AuthProvider ~ authTokens:", authTokens);
+    console.log("🚀 ~ AuthProvider ~ user:", user);
+  }, [user]);
 
   let login = async (e) => {
     e.preventDefault();
@@ -23,9 +30,13 @@ export const AuthProvider = ({ children }) => {
     });
 
     let data = await response.json();
+    console.log("🚀 ~ login ~ data:", data);
+    const userData = jwtDecode(data.accessToken);
+
     if (response.status === 200) {
-      setAuthTokens(data);
-      setUser(jwtDecode(data.token));
+      setAuthTokens(data.accessToken);
+      setUser(userData);
+      navigate("/");
     } else {
       alert("Something went wrong");
     }

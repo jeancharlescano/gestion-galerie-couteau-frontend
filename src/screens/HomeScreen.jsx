@@ -35,7 +35,7 @@ const HomeScreen = () => {
             id="toto"
             className="font text-white font-medium text-7xl tracking-widest"
           >
-            Coutellerie Tony, hello {user}
+            Coutellerie Tony
           </p>
           <img src={logoNoBg} alt="" />
         </div>
