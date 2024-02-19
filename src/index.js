@@ -1,20 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { AuthProvider } from "./context/authContext";
 
 import "./index.css";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import App from "./App.js";
-import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <BrowserRouter>
-    <AuthProvider>
-      <App />
-    </AuthProvider>
-  </BrowserRouter>
-);
+root.render(<App />);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

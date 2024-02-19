@@ -58,3 +58,9 @@ input[type="number"] {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
+
+.display:hover .group {
+  transform: scale(0.4) rotate(-90deg);
+  left: -200px;
+  transition: all ease-out 0.5s;
+}
