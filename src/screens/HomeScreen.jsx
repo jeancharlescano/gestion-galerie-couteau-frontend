@@ -15,6 +15,7 @@ import AuthContext from "../context/authContext";
 const HomeScreen = () => {
   let { user } = useContext(AuthContext);
   console.log("🚀 ~ HomeScreen ~ user:", user);
+  
   useEffect(() => {
     const sr = ScrollReveal();
     sr.reveal(
@@ -30,14 +31,16 @@ const HomeScreen = () => {
   return (
     <div>
       <div className="h-screen bg-fire-img bg-no-repeat bg-cover bg-main-black bg-center">
-        <div className="absolute top-[10%] left-[50%] -translate-x-1/2">
+        <div className="absolute top-[15%] left-[50%] -translate-x-1/2 ">
           <p
             id="toto"
             className="font text-white font-medium text-7xl tracking-widest"
           >
             Coutellerie Tony, hello {user}
           </p>
-          <img src={logoNoBg} alt="" />
+          <div className="w-full h-full flex items-center justify-center">
+            <img className="h-80" src={logoNoBg} alt="" />
+          </div>
         </div>
         <div className="absolute bottom-5 flex items-center justify-center h-auto w-full">
           {/* <a href="#pres" onClick={(e) => scrollToSection(e, '#pres')} className="animate-bounce avatar "> */}
