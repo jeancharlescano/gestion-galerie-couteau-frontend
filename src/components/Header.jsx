@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useNavigate } from "react-router-dom";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-
-import logoNoBg from "../assets/img/logoNOBg.png"
+import AuthContext from "../context/authContext";
+import logoNoBg from "../assets/img/logoNOBg.png";
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 const Header = ({ activeNav }) => {
   const navigate = useNavigate();
+  let { user, logoutUser } = useContext(AuthContext);
 
   const navItems = [
     { label: "Home", to: "/" },
@@ -43,11 +45,19 @@ const Header = ({ activeNav }) => {
         </div>
       </nav>
       <div className="w-1/3 flex justify-end items-center pr-8">
-        <FontAwesomeIcon
-          icon={faUser}
-          className="h-8 w-h-8  cursor-pointer text-white hover:text-gold"
-          onClick={() => navigate("/login")}
-        ></FontAwesomeIcon>
+        {user ? (
+          <FontAwesomeIcon
+            className="h-8 w-h-8  cursor-pointer text-white hover:text-gold"
+            icon={faArrowRightFromBracket}
+            onClick={logoutUser}
+          ></FontAwesomeIcon>
+        ) : (
+          <FontAwesomeIcon
+            icon={faUser}
+            className="h-8 w-h-8  cursor-pointer text-white hover:text-gold"
+            onClick={() => navigate("/login")}
+          ></FontAwesomeIcon>
+        )}
       </div>
     </div>
   );

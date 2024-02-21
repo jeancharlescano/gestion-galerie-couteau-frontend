@@ -6,9 +6,6 @@ import AuthContext from "../context/authContext";
 
 const LoginScreen = () => {
   let { loginUser } = useContext(AuthContext);
-  const login = () => {
-    // Ajoutez votre logique de connexion ici
-  };
 
   const goToRegister = () => {
     // Ajoutez votre logique de redirection vers l'inscription ici
@@ -61,7 +58,6 @@ const LoginScreen = () => {
                         <button
                           className="inline-block px-6 py-2.5 text-black font-medium text-xs leading-tight uppercase bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] rounded shadow-md hover:text-white hover:bg-transparent focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
                           type="submit"
-                          onClick={login}
                         >
                           Se connecter
                         </button>
