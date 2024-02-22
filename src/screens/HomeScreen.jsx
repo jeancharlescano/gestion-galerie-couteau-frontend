@@ -36,7 +36,7 @@ const HomeScreen = () => {
             id="toto"
             className="font text-white font-medium text-7xl tracking-widest"
           >
-            Coutellerie Tony
+            Coutellerie {user ? user.userEmail : null}
           </p>
           <div className="w-full h-full flex items-center justify-center">
             <img className="h-80" src={logoNoBg} alt="" />

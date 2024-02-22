@@ -8,21 +8,18 @@ export default AuthContext;
 export const AuthProvider = ({ children }) => {
   const [authTokens, setAuthTokens] = useState(() =>
     localStorage.getItem("authToken")
-      ? jwtDecode(localStorage.getItem("authToken"))
+      ? JSON.parse(localStorage.getItem("authToken"))
       : null
   );
   const [user, setUser] = useState(() =>
     localStorage.getItem("authToken")
-      ? JSON.parse(localStorage.getItem("authToken"))
+      ? jwtDecode(localStorage.getItem("authToken"))
       : null
   );
 
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   console.log("🚀 ~ AuthProvider ~ authTokens:", authTokens);
-  //   console.log("🚀 ~ AuthProvider ~ user:", user);
-  // }, [user]);
+  const navigate = useNavigate();
 
   let login = async (e) => {
     e.preventDefault();
@@ -39,9 +36,10 @@ export const AuthProvider = ({ children }) => {
     });
 
     let data = await response.json();
+    console.log("🚀 ~ login ~ data:", data);
 
     if (response.status === 200) {
-      setAuthTokens(data.accessToken);
+      setAuthTokens(data);
       setUser(jwtDecode(data.accessToken));
       localStorage.setItem("authToken", JSON.stringify(data));
       navigate("/gallery");
@@ -57,11 +55,49 @@ export const AuthProvider = ({ children }) => {
     navigate("/login");
   };
 
+  const updateToken = async () => {
+    console.log("🚀 ~ updateToken ~ authTokens:", authTokens)
+    let response = await fetch("http://localhost:5000/api/auth/refresh", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        refreshToken: authTokens.refreshToken,
+      }),
+    });
+
+    let data = await response.json();
+    
+    if (response.status === 200) {
+      let newAuthData = {
+        "accessToken": data,
+        'refreshToken' : authTokens.refreshToken
+      }
+
+      setAuthTokens(newAuthData);
+      setUser(jwtDecode(data.accessToken));
+      localStorage.setItem("authToken", JSON.stringify(data));
+    } else {
+      logout();
+    }
+  };
+
   let contextData = {
     user: user,
     loginUser: login,
     logoutUser: logout,
   };
+
+  useEffect(() => {
+    let fiftyNineMin = 1000 * 60 * 59
+    let interval = setInterval(() => {
+      if (authTokens) {
+        updateToken();
+      }
+    }, fiftyNineMin );
+    return () => clearInterval(interval);
+  }, [authTokens, loading]);
 
   return (
     <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>
