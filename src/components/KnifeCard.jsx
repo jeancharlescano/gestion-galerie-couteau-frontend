@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import toto from "../assets/img/knifes/santoku.png";
+import toto from "../assets/img/knifes/Daozi.png";
 const KnifeCard = ({ knife }) => {
   const navigate = useNavigate();
 
@@ -19,11 +19,13 @@ const KnifeCard = ({ knife }) => {
           className="absolute top-0 left-0 w-full h-full object-cover rounded-t-xl"
         /> */}
         <img
-          src={toto}
+          src={`data:image/jpeg;base64, ${knife.img}`}
           alt=""
-          className="absolute w-full left-0 h-full object-cover duration-500 group"
+          className="absolute w-full left-0 h-full object-contain duration-500 group"
         />
-        <div className="absolute top-0 -right-full w-1/2 h-full bg-blue-600 transition-all duration-1000 ease-out data"> </div>
+        <div className="absolute top-0 -right-full w-2/3 h-full bg-blue-600 transition-all duration-1000 ease-out data">
+          {" "}
+        </div>
       </div>
       <div className="h-2/6 flex justify-center items-center">
         <p className="text-4xl text-white font-bold">
