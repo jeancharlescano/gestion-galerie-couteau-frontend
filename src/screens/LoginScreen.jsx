@@ -7,10 +7,6 @@ import AuthContext from "../context/authContext";
 const LoginScreen = () => {
   let { loginUser } = useContext(AuthContext);
 
-  const goToRegister = () => {
-    // Ajoutez votre logique de redirection vers l'inscription ici
-  };
-
   return (
     <div className="bg-main-black first-line:h-screen w-screen justify-center items-center flex absolute">
       <section className="h-full gradient-form bg-main-black md:h-screen w-11/12 lg:w-1/3">
@@ -69,7 +65,6 @@ const LoginScreen = () => {
                         <Link
                           to="/register"
                           className="text-gold text-md hover:scale-105"
-                          onClick={goToRegister}
                         >
                           S'inscrire
                         </Link>
