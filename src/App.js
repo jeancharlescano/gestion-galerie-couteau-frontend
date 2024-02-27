@@ -12,6 +12,7 @@ import AddKnife from "./screens/AddKnife";
 import ServiceScreen from "./screens/ServiceScreen";
 import ContactScreen from "./screens/ContactScreen";
 import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/service" element={<ServiceScreen />} />
           <Route path="/contact" element={<ContactScreen />} />
           <Route path="/login" element={<LoginScreen />} />
+          <Route path="/register" element={<RegisterScreen />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

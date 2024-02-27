@@ -1,15 +1,11 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom/dist";
+import React from "react";
+import Header from "../components/Header";
 
 import logoNOBg from "../assets/img/logoNOBg.png";
-import AuthContext from "../context/authContext";
+import { Link } from "react-router-dom";
 
-const LoginScreen = () => {
-  let { loginUser } = useContext(AuthContext);
-
-  const goToRegister = () => {
-    // Ajoutez votre logique de redirection vers l'inscription ici
-  };
+const RegisterScreen = () => {
+  const registerUser = () => {};
 
   return (
     <div className="bg-main-black first-line:h-screen w-screen justify-center items-center flex absolute">
@@ -22,18 +18,15 @@ const LoginScreen = () => {
                   <div className="md:p-12 md:mx-6">
                     <div className="text-center">
                       <img
-                        className="mx-auto w-48 rounded-full"
+                        className="mx-auto w-24 rounded-full"
                         src={logoNOBg}
                         alt="logo"
                       />
                       <h4 className="text-xl text-white font-semibold mt-1 mb-6 pb-1">
-                        Coutellerie Tony
+                        Inscription
                       </h4>
                     </div>
-                    <form onSubmit={loginUser}>
-                      <p className="mb-4 text-white">
-                        Veuillez vous connecter à votre compte
-                      </p>
+                    <form onSubmit={registerUser}>
                       <div className="mb-4">
                         <input
                           type="email"
@@ -69,7 +62,6 @@ const LoginScreen = () => {
                         <Link
                           to="/register"
                           className="text-gold text-md hover:scale-105"
-                          onClick={goToRegister}
                         >
                           S'inscrire
                         </Link>
@@ -86,4 +78,4 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default RegisterScreen;

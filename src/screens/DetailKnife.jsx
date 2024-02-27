@@ -9,7 +9,7 @@ import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 
 const DetailKnife = () => {
   const location = useLocation();
-  const [isEdit, setIsEdit] = useState(true);
+  const [isEdit, setIsEdit] = useState(false);
   const knifeValues = location.state?.knifeValues;
   console.log(
     "🚀 ~ file: DetailKnife.jsx:7 ~ DetailKnife ~ knifeValues:",
@@ -29,18 +29,16 @@ const DetailKnife = () => {
   return (
     <>
       <Header activeNav={1} />
-      <div className="bg-gradient-to-b from-main-black to-black-lighter h-auto min-h-[calc(100vh-80px)] flex flex-col items-center p-4">
+      <div className="bg-gradient-to-b from-main-black to-black-lighter h-auto min-h-[calc(100vh+80px)] flex flex-col items-center p-4">
         <div className="w-full flex items-center justify-end">
           <button
-            to="/knife/add"
-            className="border-2 rounded-lg border-blue-500 text-blue-500  flex items-center justify-center font-extrabold p-2 hover:border-2 hover:bg-blue-500 hover:text-main-black"
+            className="rounded bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] flex items-center justify-center font-extrabold p-2  hover:text-white"
             onClick={() => setIsEdit(!isEdit)}
           >
             <FontAwesomeIcon icon={faPenToSquare} />
           </button>
           <button
-            to="/knife/add"
-            className="border-2 rounded-lg border-red-500 text-red-500  flex items-center justify-center font-extrabold p-2 hover:border-2 hover:bg-red-500 hover:text-main-black"
+            className="ml-2 rounded bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] flex items-center justify-center font-extrabold p-2  hover:text-white"
             onClick={() => delKnife()}
           >
             <FontAwesomeIcon icon={faTrash} />
@@ -53,9 +51,9 @@ const DetailKnife = () => {
             <>
               <div className="w-full h-96 relative">
                 <img
-                  src={`data:image/jpeg;base64, ${knifeValues.img}`}
+                  src={`data:image/png;base64, ${knifeValues.img}`}
                   alt=""
-                  className="absolute top-0 left-0 w-full h-full object-cover rounded-xl"
+                  className="absolute top-0 left-0 w-full h-full object-cover rounded-xl "
                 />
               </div>
               <h1 className="text-3xl w-full mt-6 text-white font-bold">

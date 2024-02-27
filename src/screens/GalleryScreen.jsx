@@ -6,7 +6,7 @@ import KnifeCard from "../components/KnifeCard";
 import Header from "../components/Header";
 import { getAllKnifes } from "../utilities/knifeRequest";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import AuthContext from "../context/authContext";
 
 const GalleryScreen = () => {
@@ -49,11 +49,11 @@ const GalleryScreen = () => {
         <div className="h-24 flex items-center justify-end">
           {user ? (
             <Link
-            to="/knife/add"
-            className="border-2 rounded-lg border-gold text-gold  flex items-center justify-center font-extrabold p-2 hover:border-none hover:bg-gold hover:text-main-black"
-          >
-            <p>Nouveau</p>
-          </Link>
+              to="/knife/add"
+              className=" rounded bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] flex items-center justify-center font-extrabold p-2  hover:text-white"
+            >
+              <FontAwesomeIcon icon={faPlus} />
+            </Link>
           ) : (
             <></>
           )}

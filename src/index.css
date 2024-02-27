@@ -67,3 +67,18 @@ input[type="number"] {
 .display:hover .data {
   right: 0;
 }
+
+.corner {
+
+  background: linear-gradient(to right, #AF7E39 5px, transparent 5px) 0 0,
+    linear-gradient(to right, #AF7E39 5px, transparent 5px) 0 100%,
+    linear-gradient(to left, #AF7E39 5px, transparent 5px) 100% 0,
+    linear-gradient(to left, #AF7E39 5px, transparent 5px) 100% 100%,
+    linear-gradient(to bottom, #AF7E39 5px, transparent 5px) 0 0,
+    linear-gradient(to bottom, #AF7E39 5px, transparent 5px) 100% 0,
+    linear-gradient(to top, #AF7E39 5px, transparent 5px) 0 100%,
+    linear-gradient(to top, #AF7E39 5px, transparent 5px) 100% 100%;
+
+  background-repeat: no-repeat;
+  background-size: 50px 50px;
+}

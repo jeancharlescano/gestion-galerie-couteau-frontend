@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
       ? jwtDecode(localStorage.getItem("authToken"))
       : null
   );
-
+  // eslint-disable-next-line
   const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const updateToken = async () => {
-    console.log("🚀 ~ updateToken ~ authTokens:", authTokens)
+    console.log("🚀 ~ updateToken ~ authTokens:", authTokens);
     let response = await fetch("http://localhost:5000/api/auth/refresh", {
       method: "POST",
       headers: {
@@ -68,12 +68,12 @@ export const AuthProvider = ({ children }) => {
     });
 
     let data = await response.json();
-    
+
     if (response.status === 200) {
       let newAuthData = {
-        "accessToken": data,
-        'refreshToken' : authTokens.refreshToken
-      }
+        accessToken: data,
+        refreshToken: authTokens.refreshToken,
+      };
 
       setAuthTokens(newAuthData);
       setUser(jwtDecode(data.accessToken));
@@ -90,13 +90,14 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    let fiftyNineMin = 1000 * 60 * 59
+    let fiftyNineMin = 1000 * 60 * 59;
     let interval = setInterval(() => {
       if (authTokens) {
         updateToken();
       }
-    }, fiftyNineMin );
+    }, fiftyNineMin);
     return () => clearInterval(interval);
+    // eslint-disable-next-line
   }, [authTokens, loading]);
 
   return (

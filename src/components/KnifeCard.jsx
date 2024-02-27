@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import toto from "../assets/img/knifes/Daozi.png";
 const KnifeCard = ({ knife }) => {
   const navigate = useNavigate();
 
