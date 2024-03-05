@@ -60,7 +60,7 @@ input[type="number"] {
 }
 
 .display:hover .group {
-  transform: scale(0.7) rotate(-90deg);
+  transform: scale(0.5) rotate(-90deg);
   left: -33%;
 }
 

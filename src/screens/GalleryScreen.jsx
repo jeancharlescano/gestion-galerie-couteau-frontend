@@ -58,7 +58,7 @@ const GalleryScreen = () => {
             <></>
           )}
         </div>
-        <div className="  grid content-start justify-items-center bg-center grid-cols-3 gap-y-16">
+        <div className="grid content-start justify-items-center bg-center grid-cols-4 gap-y-16">
           {data.map((knife) => (
             <KnifeCard key={knife.id} knife={knife}></KnifeCard>
           ))}
