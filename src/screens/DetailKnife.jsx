@@ -49,11 +49,11 @@ const DetailKnife = () => {
             <>toto</>
           ) : (
             <>
-              <div className="w-full h-96 relative">
+              <div className="w-5/6 h-96 relative shadow-2xl">
                 <img
                   src={`data:image/png;base64, ${knifeValues.img}`}
                   alt=""
-                  className="absolute top-0 left-0 w-full h-full object-cover rounded-xl "
+                  className="absolute top-0 left-0 w-full h-full object-contain   "
                 />
               </div>
               <h1 className="text-3xl w-full mt-6 text-white font-bold">
