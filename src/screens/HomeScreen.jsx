@@ -33,10 +33,9 @@ const HomeScreen = () => {
       <div className="h-screen bg-fire-img bg-no-repeat bg-cover bg-main-black bg-center">
         <div className="absolute top-[15%] left-[50%] -translate-x-1/2 ">
           <p
-            id="toto"
             className="font text-white font-medium text-7xl tracking-widest"
           >
-            Coutellerie {user ? user.userEmail : null}
+            Coutellerie Tony
           </p>
           <div className="w-full h-full flex items-center justify-center">
             <img className="h-80" src={logoNoBg} alt="" />

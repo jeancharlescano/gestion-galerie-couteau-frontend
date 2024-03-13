@@ -28,10 +28,6 @@ const GalleryScreen = () => {
       </>
     );
   if (!data) {
-    console.log(
-      "🚀 ~ file: GalleryScreen.jsx:33 ~ GalleryScreen ~ data:",
-      data
-    );
     return (
       <div className="h-screen overflow-hidden flex items-center justify-center">
         <FontAwesomeIcon
@@ -47,12 +43,12 @@ const GalleryScreen = () => {
       <Header activeNav={1} />
       <div className=" min-h-screen h-auto bg-main-black p-4">
         <div className="h-24 flex items-center justify-end">
-          {user ? (
+          {user.isAdmin === true ? (
             <Link
               to="/knife/add"
-              className=" rounded bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] flex items-center justify-center font-extrabold p-2  hover:text-white"
+              className=" bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] rounded box-border text-white block font-medium p-[2px] relative no-underline z-10 hover"
             >
-              <FontAwesomeIcon icon={faPlus} />
+              <FontAwesomeIcon icon={faPlus} className="flex items-center bg-[#29353D] h-6 w-6 rounded justify-center transition duration-200 ease-in-out txtbtn"/>
             </Link>
           ) : (
             <></>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import Header from "../components/Header";
@@ -6,8 +6,10 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { deleteKnife } from "../utilities/knifeRequest";
 import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
+import AuthContext from "../context/authContext";
 
 const DetailKnife = () => {
+  let { user } = useContext(AuthContext);
   const location = useLocation();
   const [isEdit, setIsEdit] = useState(false);
   const knifeValues = location.state?.knifeValues;
@@ -31,18 +33,24 @@ const DetailKnife = () => {
       <Header activeNav={1} />
       <div className="bg-gradient-to-b from-main-black to-black-lighter h-auto min-h-[calc(100vh+80px)] flex flex-col items-center p-4">
         <div className="w-full flex items-center justify-end">
-          <button
-            className="rounded bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] flex items-center justify-center font-extrabold p-2  hover:text-white"
-            onClick={() => setIsEdit(!isEdit)}
-          >
-            <FontAwesomeIcon icon={faPenToSquare} />
-          </button>
-          <button
-            className="ml-2 rounded bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] flex items-center justify-center font-extrabold p-2  hover:text-white"
-            onClick={() => delKnife()}
-          >
-            <FontAwesomeIcon icon={faTrash} />
-          </button>
+          {user.isAdmin === true ? (
+            <>
+              <button
+                className="rounded bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] flex items-center justify-center font-extrabold p-2  hover:text-white"
+                onClick={() => setIsEdit(!isEdit)}
+              >
+                <FontAwesomeIcon icon={faPenToSquare} />
+              </button>
+              <button
+                className="ml-2 rounded bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] flex items-center justify-center font-extrabold p-2  hover:text-white"
+                onClick={() => delKnife()}
+              >
+                <FontAwesomeIcon icon={faTrash} />
+              </button>
+            </>
+          ) : (
+            <></>
+          )}
         </div>
         <div className="w-2/4 h-auto flex flex-col items-center mt-6">
           {isEdit ? (

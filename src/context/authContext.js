@@ -36,7 +36,6 @@ export const AuthProvider = ({ children }) => {
     });
 
     let data = await response.json();
-    console.log("🚀 ~ login ~ data:", data);
 
     if (response.status === 200) {
       setAuthTokens(data);

@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 
 import logoNOBg from "../assets/img/logoNOBg.png";
-import { Link, useNavigate, useNavigation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { register } from "../utilities/userRequest";
 
 const RegisterScreen = () => {
@@ -75,7 +75,7 @@ const RegisterScreen = () => {
                           type="email"
                           name="email"
                           className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-black focus:outline-none"
-                          id="passwdInput"
+                          id="emailInput"
                           placeholder="Email"
                           ref={email}
                         />

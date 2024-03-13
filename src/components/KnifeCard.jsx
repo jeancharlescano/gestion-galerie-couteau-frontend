@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 const KnifeCard = ({ knife }) => {
+  console.log("🚀 ~ KnifeCard ~ knife:", knife);
   const navigate = useNavigate();
 
   return (
@@ -20,10 +21,17 @@ const KnifeCard = ({ knife }) => {
         <img
           src={`data:image/jpeg;base64, ${knife.img}`}
           alt=""
-          className="absolute px-4 left-0 h-full object-contain duration-500 group"
+          className="absolute px-4 left-0 h-full w-full object-cover duration-500 group"
         />
-        <div className="absolute top-0 -right-full w-2/3 h-full bg-blue-600 transition-all duration-1000 ease-out data">
-          {" "}
+        <div className="absolute top-0 -right-full w-2/3 h-full  transition-all duration-1000 ease-out data p-2">
+          <div className="h-full w-full text-white flex flex-col justify-evenly">
+            <span>
+              Lame : {knife.blade_material} de {knife.blade_length} cm
+            </span>
+            <span>
+              Manche : {knife.handle_material} de {knife.handle_length} cm
+            </span>
+          </div>
         </div>
       </div>
       <div className="h-2/6 flex justify-center items-center">
