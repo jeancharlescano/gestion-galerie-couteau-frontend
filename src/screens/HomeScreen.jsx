@@ -133,9 +133,9 @@ const HomeScreen = () => {
             </p>
             <Link
               to="/gallery"
-              className=" px-14 text-black font-medium text-md uppercase bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] rounded shadow-md hover:text-white hover:bg-transparent"
+              className=" bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] rounded-md box-border text-white block h-12 text-xl p-[3px] relative no-underline w-28 z-10 hover"
             >
-              gallery
+              <span className="flex items-center bg-main-black-lighter h-full w-full rounded-md justify-center transition-all txtbtn">Gallerie</span>
             </Link>
           </div>
         </div>

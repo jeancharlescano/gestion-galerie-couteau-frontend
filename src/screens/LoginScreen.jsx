@@ -52,11 +52,12 @@ const LoginScreen = () => {
                       </div>
                       <div className="text-center pt-1 pb-1">
                         <button
-                          className="inline-block px-6 py-2.5 text-black font-medium text-xs leading-tight uppercase bg-gradient-to-r from-gold to-[#ffedd4] rounded shadow-md hover:text-white hover:bg-transparent focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
-                          type="submit"
+                        className=" bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] rounded-md box-border text-white block h-[44px] font-medium p-[3px] relative no-underline w-full z-10 hover"
+                        type="submit"
                         >
-                          Se connecter
+                          <span className="flex items-center bg-[#29353D] h-full w-full rounded-md justify-center transition duration-200 ease-in-out txtbtn">Se connecter</span>
                         </button>
+                        
                       </div>
                       <div className="flex flex-col items-center justify-between pb-6 lg:pb-0">
                         <p className="mb-2 text-white">
