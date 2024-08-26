@@ -63,11 +63,11 @@ const AddKnife = () => {
     <>
       <Header activeNav={1} />
 
-      <div className="bg-gradient-to-b from-main-black to-black-lighter h-[calc(100vh-56px)] overflow-hidden flex flex-col items-center">
+      <div className="h-[calc(100vh-56px)] overflow-hidden flex flex-col items-center">
         <div className="h-11 w-full px-5 flex items-center">
           <FontAwesomeIcon
             icon={faCircleArrowLeft}
-            style={{ color: "#987252" }}
+            style={{ color: "#AF7E39" }}
             onClick={() => navigate("/gallery")}
             className="w-10 h-10 cursor-pointer hover:scale-110 transition-all"
           />

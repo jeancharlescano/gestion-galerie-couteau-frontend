@@ -8,16 +8,16 @@ const ServiceScreen = () => {
   return (
     <>
       <Header activeNav={2} />
-      <div className="h-[calc(100vh-80px)] flex items-center justify-evenly">
-        <div className="w-96 h-96 p-16 shadow-2xl flex flex-col justify-between">
+      <div className="h-[calc(100vh-80px)] flex items-center justify-evenly ">
+        <div className="w-96 h-96 p-16 shadow-2xl flex flex-col justify-between text-white">
           <img
             width="50"
             height="50"
             src="https://img.icons8.com/ios/50/af7e39/small-axe.png"
             alt="small-axe"
           />
-          <h2 className="font-extrabold text-xl text-white">Hache</h2>
-          <p className="text-white">
+          <h2 className="font-extrabold text-xl ">Hache</h2>
+          <p className="">
             Nous proposons des haches de lancer, des hachettes, mais aussi des
             manches
           </p>

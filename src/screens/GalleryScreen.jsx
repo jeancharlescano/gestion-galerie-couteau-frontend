@@ -43,16 +43,16 @@ const GalleryScreen = () => {
       <Header activeNav={1} />
       <div className=" min-h-screen h-auto bg-main-black p-4">
         <div className="h-24 flex items-center justify-end">
-          {user.isAdmin === true ? (
+          {user ? user.isAdmin === true ? (
             <Link
               to="/knife/add"
-              className=" bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] rounded box-border text-white block font-medium p-[2px] relative no-underline z-10 hover"
+              className=" bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] rounded box-border text-white block font-medium p-[2px] mr-4 relative no-underline z-10 hover"
             >
-              <FontAwesomeIcon icon={faPlus} className="flex items-center bg-[#29353D] h-6 w-6 rounded justify-center transition duration-200 ease-in-out txtbtn"/>
+              <FontAwesomeIcon icon={faPlus} className="flex items-center bg-[#29353D] h-8 w-8 rounded justify-center transition duration-200 ease-in-out txtbtn"/>
             </Link>
           ) : (
             <></>
-          )}
+          ) : <></>}
         </div>
         <div className="grid content-start justify-items-center bg-center grid-cols-4 gap-y-16">
           {data.map((knife) => (

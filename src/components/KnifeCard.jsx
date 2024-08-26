@@ -10,9 +10,9 @@ const KnifeCard = ({ knife }) => {
       onClick={() =>
         navigate(`/gallery/${knife.id}`, { state: { knifeValues: knife } })
       }
-      className="w-10/12 transition-all h-80 cursor-pointer bg-gradient-to-b from-[#1A1E28] to-[#2E3D44]  border-2 rounded-xl flex flex-col justify-center hover:scale-105  display"
+      className="w-10/12 transition-all h-80 cursor-pointer flex flex-col justify-center hover:scale-105  display "
     >
-      <div className="h-4/6 w-full border-b-2  relative rounded-t-xl overflow-hidden">
+      <div className="h-4/6 w-full bg-gradient-to-b from-[#1A1E28] to-[#2E3D44] relative overflow-hidden">
         {/* <img
           src={`data:image/jpeg;base64, ${knife.img}`}
           alt=""
@@ -21,7 +21,7 @@ const KnifeCard = ({ knife }) => {
         <img
           src={`data:image/jpeg;base64, ${knife.img}`}
           alt=""
-          className="absolute px-4 left-0 h-full w-full object-cover duration-500 group"
+          className="absolute left-0 h-full w-full object-cover duration-500 group"
         />
         <div className="absolute top-0 -right-full w-2/3 h-full  transition-all duration-1000 ease-out data p-2">
           <div className="h-full w-full text-white flex flex-col justify-evenly">
@@ -34,8 +34,8 @@ const KnifeCard = ({ knife }) => {
           </div>
         </div>
       </div>
-      <div className="h-2/6 flex justify-center items-center">
-        <p className="text-4xl text-white font-bold">
+      <div className="py-2 h-2/6">
+        <p className="text-2xl text-gray-300 font-bold">
           {knife.name.toUpperCase()}
         </p>
       </div>

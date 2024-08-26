@@ -1,7 +1,7 @@
-// PrivateRoute.js
 import { Navigate, Outlet } from "react-router-dom/dist";
 import { useContext } from "react";
 import AuthContext from "../context/authContext";
+
 const PrivateRoute = () => {
   console.log("private routes works");
   let { user } = useContext(AuthContext);
