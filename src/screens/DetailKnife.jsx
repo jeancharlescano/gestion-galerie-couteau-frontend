@@ -31,23 +31,27 @@ const DetailKnife = () => {
   return (
     <>
       <Header activeNav={1} />
-      <div className="bg-gradient-to-b from-main-black to-black-lighter h-auto min-h-[calc(100vh+80px)] flex flex-col items-center p-4">
+      <div className=" h-auto min-h-[calc(100vh+80px)] flex flex-col items-center p-4">
         <div className="w-full flex items-center justify-end">
-          {user.isAdmin === true ? (
-            <>
-              <button
-                className="rounded bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] flex items-center justify-center font-extrabold p-2  hover:text-white"
-                onClick={() => setIsEdit(!isEdit)}
-              >
-                <FontAwesomeIcon icon={faPenToSquare} />
-              </button>
-              <button
-                className="ml-2 rounded bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] flex items-center justify-center font-extrabold p-2  hover:text-white"
-                onClick={() => delKnife()}
-              >
-                <FontAwesomeIcon icon={faTrash} />
-              </button>
-            </>
+          {user ? (
+            user.isAdmin === true ? (
+              <>
+                <button
+                  className="rounded bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] flex items-center justify-center font-extrabold p-2  hover:text-white"
+                  onClick={() => setIsEdit(!isEdit)}
+                >
+                  <FontAwesomeIcon icon={faPenToSquare} />
+                </button>
+                <button
+                  className="ml-2 rounded bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] flex items-center justify-center font-extrabold p-2  hover:text-white"
+                  onClick={() => delKnife()}
+                >
+                  <FontAwesomeIcon icon={faTrash} />
+                </button>
+              </>
+            ) : (
+              <></>
+            )
           ) : (
             <></>
           )}

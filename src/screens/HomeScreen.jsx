@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useRef } from "react";
 import ScrollReveal from "scrollreveal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
@@ -14,8 +14,13 @@ import AuthContext from "../context/authContext";
 
 const HomeScreen = () => {
   let { user } = useContext(AuthContext);
-  console.log("🚀 ~ HomeScreen ~ user:", user);
-  
+  const logo = useRef();
+
+  window.addEventListener("scroll", () => {
+    let scroll = window.scrollY;
+    logo.current.style.marginTop = `${scroll * 0.9}px`;
+  });
+
   useEffect(() => {
     const sr = ScrollReveal();
     sr.reveal(
@@ -29,30 +34,16 @@ const HomeScreen = () => {
   }, []);
 
   return (
-    <div>
-      <div className="h-screen bg-fire-img bg-no-repeat bg-cover bg-main-black bg-center">
+    <>
+      <div className="h-screen bg-fire-img bg-no-repeat bg-cover bg-main-black bg-center overflow-hidden">
         <div className="absolute top-[15%] left-[50%] -translate-x-1/2 ">
-          <p
-            className="font text-white font-medium text-7xl tracking-widest"
-          >
+          <p className="font text-white font-medium text-7xl tracking-widest">
             Lame De Tony
           </p>
-          <div className="w-full h-full flex items-center justify-center">
+          <div ref={logo} className=" flex items-center justify-center">
             <img className="h-80" src={logoNoBg} alt="" />
           </div>
         </div>
-        <div className="absolute bottom-5 flex items-center justify-center h-auto w-full">
-          {/* <a href="#pres" onClick={(e) => scrollToSection(e, '#pres')} className="animate-bounce avatar "> */}
-          <a href="#pres" className="animate-bounce avatar ">
-            <FontAwesomeIcon
-              icon={faArrowDown}
-              className="h-8 w-8 mt-[15px] ml-[15px] text-white"
-            ></FontAwesomeIcon>
-          </a>
-        </div>
-        {/* <div className="animate-bounce absolute top-[95%] left-[50%] -translate-x-1/2 w-24 h-24 rounded-full border-2 flex items-center justify-center cursor-pointer">
-          <p className=" text-white">Découvrir</p>
-        </div> */}
       </div>
       <div
         id="pres"
@@ -74,7 +65,7 @@ const HomeScreen = () => {
       </div>
       <div
         id="gallery"
-        className="flex items-center px-[15%] py-[5%] h-screen bg-main-black-lighter"
+        className="flex items-center px-[15%] py-[5%] h-screen bg-main-black-lighter "
       >
         <div className="flex items-center justify-between h-full w-full">
           <div className="w-96 h-96">
@@ -134,12 +125,14 @@ const HomeScreen = () => {
               to="/gallery"
               className=" bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] rounded-md box-border text-white block h-12 text-xl p-[3px] relative no-underline w-28 z-10 hover"
             >
-              <span className="flex items-center bg-main-black-lighter h-full w-full rounded-md justify-center transition-all txtbtn">Gallerie</span>
+              <span className="flex items-center bg-main-black-lighter h-full w-full rounded-md justify-center transition-all txtbtn">
+                Gallerie
+              </span>
             </Link>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
