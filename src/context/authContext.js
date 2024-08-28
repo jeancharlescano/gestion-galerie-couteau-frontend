@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
   let login = async (e) => {
     e.preventDefault();
     console.log("form submitted");
-    let response = await fetch("http://localhost:5000/api/auth/login", {
+    let response = await fetch(`${process.env.REACT_APP_API_URL}/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }) => {
 
   const updateToken = async () => {
     console.log("🚀 ~ updateToken ~ authTokens:", authTokens);
-    let response = await fetch("http://localhost:5000/api/auth/refresh", {
+    let response = await fetch(`${process.env.REACT_APP_API_URL}/auth/refresh`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

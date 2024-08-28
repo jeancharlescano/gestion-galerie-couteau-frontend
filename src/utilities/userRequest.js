@@ -1,7 +1,7 @@
 export const register = async (values) => {
   console.log("🚀 ~ register ~ values:", values);
   try {
-    let response = await fetch("http://localhost:5000/api/auth/register", {
+    let response = await fetch(`${process.env.REACT_APP_API_URL}/auth/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
