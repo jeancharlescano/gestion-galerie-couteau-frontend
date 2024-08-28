@@ -1,51 +1,45 @@
-import React, { useEffect, useContext, useRef } from "react";
-import ScrollReveal from "scrollreveal";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import React, { useEffect, useRef } from "react";
 
 import logoNoBg from "../assets/img/logoNOBg.png";
+import bg from "../assets/img/bg.jpeg";
 import forging from "../assets/img/forging.jpeg";
 import daozi from "../assets/img/knifes/machoir.jpg";
 import chief from "../assets/img/knifes/chief.jpg";
 import hache from "../assets/img/knifes/hache.jpg";
 import { Link } from "react-router-dom";
 
-import AuthContext from "../context/authContext";
-
 const HomeScreen = () => {
-  let { user } = useContext(AuthContext);
   const logo = useRef();
 
-  window.addEventListener("scroll", () => {
-    let scroll = window.scrollY;
-    logo.current.style.marginTop = `${scroll * 0.9}px`;
-  });
-
   useEffect(() => {
-    const sr = ScrollReveal();
-    sr.reveal(
-      "#knifes",
-      {
-        duration: 3000,
-        reset: true,
-      },
-      100
-    );
+    const handleScroll = () => {
+      let scroll = window.scrollY;
+      if (logo.current) {
+        logo.current.style.marginTop = `${scroll * 1}px`;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
     <>
-      <div className="h-screen bg-fire-img bg-no-repeat bg-cover bg-main-black bg-center overflow-hidden">
-        <div className="absolute top-[15%] left-[50%] -translate-x-1/2 ">
-          <p className="font text-white font-medium text-7xl tracking-widest">
+      <section className="relative h-screen bg-main-black overflow-hidden flex justify-center items-center ">
+        <img src={bg} className="absolute inset-0 object-cover" alt="background"/>
+        <div className="absolute top-40 flex flex-col items-center">
+          <p className=" font text-white font-medium text-7xl tracking-widest">
             Lame De Tony
           </p>
-          <div ref={logo} className=" flex items-center justify-center">
-            <img className="h-80" src={logoNoBg} alt="" />
-          </div>
+          <img className=" h-80" src={logoNoBg} ref={logo} alt="logo" />
         </div>
-      </div>
-      <div
+      </section>
+
+      {/* PRESENTATION */}
+      <section
         id="pres"
         className=" flex items-center px-[10%] py-[5%] h-screen bg-main-black"
       >
@@ -62,8 +56,10 @@ const HomeScreen = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div
+      </section>
+
+    {/* GALlERIE */}
+      <section
         id="gallery"
         className="flex items-center px-[15%] py-[5%] h-screen bg-main-black-lighter "
       >
@@ -131,7 +127,7 @@ const HomeScreen = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };
