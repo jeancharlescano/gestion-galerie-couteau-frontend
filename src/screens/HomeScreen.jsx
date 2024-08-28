@@ -7,6 +7,7 @@ import bacTrempe from "../assets/img/background/Front.png";
 import forging from "../assets/img/forging.jpeg";
 import daozi from "../assets/img/knifes/machoir.jpg";
 import chief from "../assets/img/knifes/chief.jpg";
+import bushcraft from "../assets/img/knifes/bushcraft.png";
 import hache from "../assets/img/knifes/hache.jpg";
 import { Link } from "react-router-dom";
 
@@ -86,7 +87,7 @@ const HomeScreen = () => {
             <div className="flex h-1/2 ">
               <div
                 id="knifes"
-                className=" w-1/2 h-full mb-1 mr-1 overflow-hidden rounded-lg"
+                className=" w-1/2 h-full mb-1 mr-1 overflow-hidden rounded-lg bg-white"
               >
                 <img
                   className="w-full h-full object-contain"
@@ -96,19 +97,19 @@ const HomeScreen = () => {
               </div>
               <div
                 id="knifes"
-                className=" w-1/2 h-full mb-1 ml-1 overflow-hidden rounded-lg"
+                className=" w-1/2 h-full mb-1 ml-1 overflow-hidden rounded-lg bg-white"
               >
                 <img
                   className="w-full h-full object-contain"
-                  src={chief}
-                  alt="chief"
+                  src={bushcraft}
+                  alt="bushcraft"
                 />
               </div>
             </div>
             <div className="flex h-1/2">
               <div
                 id="knifes"
-                className=" w-1/2 h-full mt-1 mr-1 overflow-hidden rounded-lg"
+                className=" w-1/2 h-full mt-1 mr-1 overflow-hidden rounded-lg bg-white"
               >
                 <img
                   className="w-full h-full object-contain"
@@ -118,7 +119,7 @@ const HomeScreen = () => {
               </div>
               <div
                 id="knifes"
-                className=" w-1/2 h-full mt-1 ml-1 overflow-hidden rounded-lg"
+                className=" w-1/2 h-full mt-1 ml-1 overflow-hidden rounded-lg bg-white"
               >
                 <img
                   className="w-full h-full object-contain"
