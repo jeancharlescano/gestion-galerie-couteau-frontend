@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from "react";
 
 import logoNoBg from "../assets/img/logoNOBg.png";
-import bg from "../assets/img/bg.jpeg";
+import background from "../assets/img/background/background.png";
+import smokeImg from "../assets/img/background/Fumee.png";
+import bacTrempe from "../assets/img/background/Front.png";
 import forging from "../assets/img/forging.jpeg";
 import daozi from "../assets/img/knifes/machoir.jpg";
 import chief from "../assets/img/knifes/chief.jpg";
@@ -10,12 +12,13 @@ import { Link } from "react-router-dom";
 
 const HomeScreen = () => {
   const logo = useRef();
-
+  const smoke = useRef();
   useEffect(() => {
     const handleScroll = () => {
       let scroll = window.scrollY;
       if (logo.current) {
-        logo.current.style.marginTop = `${scroll * 1}px`;
+        logo.current.style.marginTop = `${scroll * 0.8}px`;
+        smoke.current.style.marginTop = `-${scroll / 1.5}px`
       }
     };
 
@@ -29,12 +32,27 @@ const HomeScreen = () => {
   return (
     <>
       <section className="relative h-screen bg-main-black overflow-hidden flex justify-center items-center ">
-        <img src={bg} className="absolute inset-0 object-cover" alt="background"/>
+        <img
+          src={background}
+          className="absolute inset-0 object-cover z-0"
+          alt="background"
+        />
+        <img
+          ref={smoke}
+          src={smokeImg}
+          className="absolute inset-0 object-cover z-20"
+          alt="background"
+        />
+        <img
+          src={bacTrempe}
+          className="absolute inset-0 object-cover z-30"
+          alt="background"
+        />
         <div className="absolute top-40 flex flex-col items-center">
           <p className=" font text-white font-medium text-7xl tracking-widest">
             Lame De Tony
           </p>
-          <img className=" h-80" src={logoNoBg} ref={logo} alt="logo" />
+          <img className=" h-80 z-10" src={logoNoBg} ref={logo} alt="logo" />
         </div>
       </section>
 
@@ -58,7 +76,7 @@ const HomeScreen = () => {
         </div>
       </section>
 
-    {/* GALlERIE */}
+      {/* GALlERIE */}
       <section
         id="gallery"
         className="flex items-center px-[15%] py-[5%] h-screen bg-main-black-lighter "
