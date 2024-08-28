@@ -20,7 +20,9 @@ const Header = ({ activeNav }) => {
   return (
     <div className="w-full h-20 bg-transparent flex">
       <div className="w-1/3 flex items-center pl-8">
-        <img className="object-fill max-h-20" src={logoNoBg} alt="logo" />
+        <Link to="/">
+          <img className="object-fill max-h-20" src={logoNoBg} alt="logo" />
+        </Link>
       </div>
       <nav className="w-2/3 flex justify-center items-center">
         <div className="w-full h-full">
