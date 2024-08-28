@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
-import logoNoBg from "../assets/img/logoNOBg.png";
+import ornement from "../assets/img/logo/Logo ornement V2.png";
+import knife from "../assets/img/logo/Logo couteau V2.png";
 import background from "../assets/img/background/background.png";
 import smokeImg from "../assets/img/background/Fumee.png";
 import bacTrempe from "../assets/img/background/Front.png";
@@ -17,9 +18,18 @@ const HomeScreen = () => {
   useEffect(() => {
     const handleScroll = () => {
       let scroll = window.scrollY;
+
+      const limitedScroll = Math.min(Math.max(scroll, 0), 200);
+      console.log("🚀 ~ handleScroll ~ limitedScroll:", limitedScroll)
+
+      const rotation = (limitedScroll / 200) * 137;
+
       if (logo.current) {
+        logo.current.style.transform = `rotate(${rotation}deg)`;
         logo.current.style.marginTop = `${scroll * 0.8}px`;
-        smoke.current.style.marginTop = `-${scroll / 1.5}px`
+      }
+      if (smoke.current) {
+        smoke.current.style.marginTop = `-${scroll / 1.5}px`;
       }
     };
 
@@ -53,7 +63,15 @@ const HomeScreen = () => {
           <p className=" font text-white font-medium text-7xl tracking-widest">
             Lame De Tony
           </p>
-          <img className=" h-80 z-10" src={logoNoBg} ref={logo} alt="logo" />
+          <div className="relative">
+            <img className="absolute h-80" src={ornement} alt="logo" />
+            <img
+              className=" relative h-80 z-20"
+              ref={logo}
+              src={knife}
+              alt="logo"
+            />
+          </div>
         </div>
       </section>
 

@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-import logoNOBg from "../assets/img/logoNOBg.png";
+import logoNOBg from "../assets/img/logo/Logo V2.png";
 import { Link, useNavigate } from "react-router-dom";
 import { register } from "../utilities/userRequest";
 

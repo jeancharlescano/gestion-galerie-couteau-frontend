@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useNavigate } from "react-router-dom";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import AuthContext from "../context/authContext";
-import logoNoBg from "../assets/img/logoNOBg.png";
+import logoNoBg from "../assets/img/logo/Logo V2.png";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 const Header = ({ activeNav }) => {

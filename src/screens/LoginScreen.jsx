@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom/dist";
 
-import logoNOBg from "../assets/img/logoNOBg.png";
+import logoNOBg from "../assets/img/logo/Logo V2.png";
 import AuthContext from "../context/authContext";
 
 const LoginScreen = () => {
