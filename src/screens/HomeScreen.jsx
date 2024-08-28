@@ -64,9 +64,9 @@ const HomeScreen = () => {
             Lame De Tony
           </p>
           <div className="relative">
-            <img className="absolute h-80" src={ornement} alt="logo" />
+            <img className="absolute h-72" src={ornement} alt="logo" />
             <img
-              className=" relative h-80 z-20"
+              className=" relative h-72 z-20"
               ref={logo}
               src={knife}
               alt="logo"

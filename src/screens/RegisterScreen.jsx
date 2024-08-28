@@ -43,7 +43,7 @@ const RegisterScreen = () => {
                   <div className="md:p-8">
                     <div className="text-center">
                       <img
-                        className="mx-auto w-24 rounded-full"
+                        className="mx-auto w-24 "
                         src={logoNOBg}
                         alt="logo"
                       />

@@ -18,7 +18,7 @@ const LoginScreen = () => {
                   <div className="md:p-12 md:mx-6">
                     <div className="text-center">
                       <img
-                        className="mx-auto w-48 rounded-full"
+                        className="mx-auto w-48 "
                         src={logoNOBg}
                         alt="logo"
                       />
