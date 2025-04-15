@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import React, { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 import Header from "../components/Header";
 import { createKnife } from "../utilities/knifeRequest";
@@ -26,11 +26,8 @@ const AddKnife = () => {
         .replace("data:", "")
         .replace(/^.+,/, "");
       knifePicB64 = base64String;
+      console.log("🚀 ~ handleFileChange ~ knifePicB64:", knifePicB64);
       // setImageSrc("data:image/jpeg;base64," + base64String)
-      console.log(
-        "🚀 ~ file: AddKnife.jsx:33 ~ handleFileChange ~ knifePicB64:",
-        knifePicB64
-      );
     };
 
     if (file) {
@@ -52,8 +49,8 @@ const AddKnife = () => {
     };
 
     try {
-      await createKnife(values);
-      navigate("/gallery");
+      const result = await createKnife(values);
+      if (result) navigate("/gallery");
     } catch (error) {
       console.log("🚀 ~ file: AddKnife.jsx:54 ~ onSubmit ~ error:", error);
     }

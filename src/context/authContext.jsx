@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 const AuthContext = createContext();
 
 export default AuthContext;
@@ -24,16 +24,19 @@ export const AuthProvider = ({ children }) => {
   let login = async (e) => {
     e.preventDefault();
     console.log("form submitted");
-    let response = await fetch(`${process.env.REACT_APP_API_URL}/auth/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: e.target.email.value,
-        password: e.target.password.value,
-      }),
-    });
+    let response = await fetch(
+      `${import.meta.env.VITE_REACT_APP_API_URL}/auth/login`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: e.target.email.value,
+          password: e.target.password.value,
+        }),
+      }
+    );
 
     let data = await response.json();
 
@@ -56,15 +59,18 @@ export const AuthProvider = ({ children }) => {
 
   const updateToken = async () => {
     console.log("🚀 ~ updateToken ~ authTokens:", authTokens);
-    let response = await fetch(`${process.env.REACT_APP_API_URL}/auth/refresh`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        refreshToken: authTokens.refreshToken,
-      }),
-    });
+    let response = await fetch(
+      `${import.meta.env.VITE_REACT_APP_API_URL}/auth/refresh`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          refreshToken: authTokens.refreshToken,
+        }),
+      }
+    );
 
     let data = await response.json();
 

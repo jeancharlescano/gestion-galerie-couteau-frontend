@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 
 import Header from "../components/Header";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";

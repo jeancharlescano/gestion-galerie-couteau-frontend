@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import useSWR from "swr";
 
 import KnifeCard from "../components/KnifeCard";
@@ -12,7 +12,7 @@ import AuthContext from "../context/authContext";
 const GalleryScreen = () => {
   let { user } = useContext(AuthContext);
   const { data, error } = useSWR(
-    `${process.env.REACT_APP_API_URL}/knife/`,
+    `${import.meta.env.VITE_REACT_APP_API_URL}/knife/`,
     getAllKnifes
   );
 
@@ -22,7 +22,7 @@ const GalleryScreen = () => {
         <Header activeNav={1} />
         <div className=" min-h-screen h-[calc(100vh-56px)] bg-main-black p-4">
           <div className=" w-full h-full flex justify-center bg-center text-white">
-            <div>failed to load</div>
+            <div>Erreur, revenez plus tard !</div>
           </div>
         </div>
       </>

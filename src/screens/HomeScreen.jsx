@@ -10,18 +10,17 @@ import daozi from "../assets/img/knifes/machoir.jpg";
 import chief from "../assets/img/knifes/chief.jpg";
 import bushcraft from "../assets/img/knifes/bushcraft.png";
 import hache from "../assets/img/knifes/hache.jpg";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 const HomeScreen = () => {
   const logo = useRef();
   const smoke = useRef();
+
   useEffect(() => {
     const handleScroll = () => {
       let scroll = window.scrollY;
 
       const limitedScroll = Math.min(Math.max(scroll, 0), 200);
-      console.log("🚀 ~ handleScroll ~ limitedScroll:", limitedScroll)
-
       const rotation = (limitedScroll / 200) * 137;
 
       if (logo.current) {
@@ -89,7 +88,7 @@ const HomeScreen = () => {
           </p>
           <div className="h-[25rem] w-[25rem] bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] rounded-full flex items-center justify-center opacity-0 anim-delay animate-slide-top">
             <div className="h-96 w-96 rounded-full flex justify-center items-center overflow-hidden ">
-              <img src={forging} alt="" />
+              <img src={forging} alt="toto" />
             </div>
           </div>
         </div>

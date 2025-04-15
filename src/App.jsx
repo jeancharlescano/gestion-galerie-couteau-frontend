@@ -1,7 +1,6 @@
-import "./App.css";
 import React from "react";
-import { Route, Routes } from "react-router-dom";
-import { BrowserRouter } from "react-router-dom";
+import { Route, Routes } from "react-router";
+import { BrowserRouter } from "react-router";
 import { AuthProvider } from "./context/authContext";
 
 import PrivateRoute from "./utilities/PrivateRoute";

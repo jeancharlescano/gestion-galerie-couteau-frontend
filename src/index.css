@@ -1,9 +1,69 @@
 @import url("https://fonts.googleapis.com/css2?family=The+Nautigal:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  /* Couleurs personnalisées */
+  --color-main-black: #232c33;
+  --color-main-black-lighter: #364149;
+  --color-black-lighter: #262424;
+  --color-gold: #af7e39;
+
+  /* Polices personnalisées */
+  --font-knife-title: "The Nautigal", cursive;
+
+  /* Images de fond */
+  --background-fire-img: url("/src/assets/img/bg.jpeg");
+
+  /* Animations personnalisées */
+  --animate: slideRight 1s ease forwards;
+  --animate-slide-left: slideLeft 1s ease forwards;
+  --animate-slide-top: slideTop 1s 0.4s ease forwards;
+  --animate-zoom-in: zoomIn 1s ease forwards;
+
+  /* Keyframes personnalisés */
+  @keyframes slideRight {
+    0% {
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slideLeft {
+    0% {
+      transform: translateX(100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slideTop {
+    0% {
+      transform: translateY(-100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes zoomIn {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
 
 html {
   scroll-behavior: smooth;
@@ -69,15 +129,14 @@ input[type="number"] {
 }
 
 .corner {
-
-  background: linear-gradient(to right, #AF7E39 5px, transparent 5px) 0 0,
-    linear-gradient(to right, #AF7E39 5px, transparent 5px) 0 100%,
-    linear-gradient(to left, #AF7E39 5px, transparent 5px) 100% 0,
-    linear-gradient(to left, #AF7E39 5px, transparent 5px) 100% 100%,
-    linear-gradient(to bottom, #AF7E39 5px, transparent 5px) 0 0,
-    linear-gradient(to bottom, #AF7E39 5px, transparent 5px) 100% 0,
-    linear-gradient(to top, #AF7E39 5px, transparent 5px) 0 100%,
-    linear-gradient(to top, #AF7E39 5px, transparent 5px) 100% 100%;
+  background: linear-gradient(to right, #af7e39 5px, transparent 5px) 0 0,
+    linear-gradient(to right, #af7e39 5px, transparent 5px) 0 100%,
+    linear-gradient(to left, #af7e39 5px, transparent 5px) 100% 0,
+    linear-gradient(to left, #af7e39 5px, transparent 5px) 100% 100%,
+    linear-gradient(to bottom, #af7e39 5px, transparent 5px) 0 0,
+    linear-gradient(to bottom, #af7e39 5px, transparent 5px) 100% 0,
+    linear-gradient(to top, #af7e39 5px, transparent 5px) 0 100%,
+    linear-gradient(to top, #af7e39 5px, transparent 5px) 100% 100%;
 
   background-repeat: no-repeat;
   background-size: 50px 50px;
@@ -85,5 +144,5 @@ input[type="number"] {
 
 .hover:hover .txtbtn {
   background: transparent;
-  color: #000
+  color: #000;
 }

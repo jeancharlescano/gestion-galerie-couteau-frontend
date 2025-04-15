@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import AuthContext from "../context/authContext";
 import logoNoBg from "../assets/img/logo/Logo V2.png";

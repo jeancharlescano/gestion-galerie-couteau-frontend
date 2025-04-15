@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router";
 import HomeScreen from "../screens/HomeScreen";
 import GalleryScreen from "../screens/GalleryScreen";
 import DetailKnife from "../screens/DetailKnife";

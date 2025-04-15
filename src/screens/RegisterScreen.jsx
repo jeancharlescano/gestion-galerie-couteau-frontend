@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 
 import logoNOBg from "../assets/img/logo/Logo V2.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router";
 import { register } from "../utilities/userRequest";
 
 const RegisterScreen = () => {
