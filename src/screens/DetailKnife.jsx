@@ -1,5 +1,91 @@
 import React, { useContext, useState } from "react";
 import { useLocation } from "react-router";
+import Header from "../components/Header";
+import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { deleteKnife } from "../utilities/knifeRequest";
+import AuthContext from "../context/authContext";
+
+const DetailKnife = () => {
+  const { user } = useContext(AuthContext);
+  const location = useLocation();
+  const [isEdit, setIsEdit] = useState(false);
+  const knifeValues = location.state?.knifeValues;
+
+  const delKnife = async () => {
+    try {
+      await deleteKnife(knifeValues.id);
+    } catch (error) {
+      console.error("Error deleting knife:", error);
+    }
+  };
+
+  return (
+    <>
+      <Header activeNav={1} />
+      <div className="min-h-[100vh] bg-[#111111] text-white">
+        <div className="relative w-full h-[500px] bg-gradient-to-br from-[#1f1f1f] to-[#2a2a2a] flex items-center justify-center">
+          <img
+            src={`data:image/png;base64, ${knifeValues.img}`}
+            alt={knifeValues.name}
+            className="max-h-[80%] object-contain"
+          />
+          {user?.isAdmin && (
+            <div className="absolute top-4 right-4 flex space-x-2">
+              <button
+                onClick={() => setIsEdit(!isEdit)}
+                className="bg-gold hover:bg-[#AF7E39] text-black px-4 py-2 rounded shadow"
+              >
+                <FontAwesomeIcon icon={faPenToSquare} />
+              </button>
+              <button
+                onClick={delKnife}
+                className="bg-gold hover:bg-[#AF7E39] text-black px-4 py-2 rounded shadow"
+              >
+                <FontAwesomeIcon icon={faTrash} />
+              </button>
+            </div>
+          )}
+        </div>
+
+        <div className="max-w-5xl mx-auto px-6 py-12">
+          <h1 className="text-4xl font-bold text-gold mb-8 text-center">
+            {knifeValues.name.toUpperCase()}
+          </h1>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <InfoItem label="Type de lame" value={knifeValues.blade_material} />
+            <InfoItem label="Taille de la lame" value={`${knifeValues.blade_length} cm`} />
+            <InfoItem label="Type de manche" value={knifeValues.handle_material} />
+            <InfoItem label="Taille du manche" value={`${knifeValues.handle_length} cm`} />
+          </div>
+
+          <div className="mt-12 border-t border-gold pt-8">
+            <h2 className="text-2xl font-semibold text-gold mb-4">Description</h2>
+            <p className="text-lg text-gray-300 leading-relaxed">
+              {knifeValues.description}
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+const InfoItem = ({ label, value }) => (
+  <div>
+    <h3 className="text-xl font-semibold text-gold">{label}</h3>
+    <p className="text-lg text-gray-300">{value}</p>
+  </div>
+);
+
+export default DetailKnife;
+
+
+
+
+/* import React, { useContext, useState } from "react";
+import { useLocation } from "react-router";
 
 import Header from "../components/Header";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -127,3 +213,4 @@ const DetailKnife = () => {
 };
 
 export default DetailKnife;
+*/

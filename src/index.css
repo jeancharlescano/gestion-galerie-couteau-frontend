@@ -8,7 +8,9 @@
   --color-main-black: #232c33;
   --color-main-black-lighter: #364149;
   --color-black-lighter: #262424;
-  --color-gold: #af7e39;
+  /* https://coolors.co/232c33-cc2936 */
+  --color-gold: #cc2936;
+  /* --color-gold: #af7e39; */
 
   /* Polices personnalisées */
   --font-knife-title: "The Nautigal", cursive;
