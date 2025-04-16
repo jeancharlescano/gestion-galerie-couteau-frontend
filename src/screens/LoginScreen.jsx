@@ -50,10 +50,10 @@ const LoginScreen = () => {
                       </div>
                       <div className="text-center pt-1 pb-1">
                         <button
-                        className=" bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] rounded-md box-border text-white block h-[44px] font-medium p-[3px] relative no-underline w-full z-10 hover"
+                        className=" bg-gradient-to-r from-gold to-black rounded-md box-border text-white block h-[44px] font-medium p-[3px] relative no-underline w-full z-10 hover"
                         type="submit"
                         >
-                          <span className="flex items-center bg-[#29353D] h-full w-full rounded-md justify-center transition duration-200 ease-in-out txtbtn">Se connecter</span>
+                          <span className="flex items-center bg-[#29353D] h-full w-full rounded justify-center transition duration-200 ease-in-out txtbtn">Se connecter</span>
                         </button>
                         
                       </div>

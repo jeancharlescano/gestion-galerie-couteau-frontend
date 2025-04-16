@@ -86,7 +86,7 @@ const HomeScreen = () => {
             Cupiditate eos dignissimos cumque tempore, illo in deleniti fugit
             nesciunt quidem quasi!
           </p>
-          <div className="h-[25rem] w-[25rem] bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] rounded-full flex items-center justify-center opacity-0 anim-delay animate-slide-top">
+          <div className="h-[25rem] w-[25rem] bg-gradient-to-r from-gold to-black rounded-full flex items-center justify-center opacity-0 anim-delay animate-slide-top">
             <div className="h-96 w-96 rounded-full flex justify-center items-center overflow-hidden ">
               <img src={forging} alt="toto" />
             </div>
@@ -155,9 +155,9 @@ const HomeScreen = () => {
             </p>
             <Link
               to="/gallery"
-              className=" bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] rounded-md box-border text-white block h-12 text-xl p-[3px] relative no-underline w-28 z-10 hover"
+              className=" bg-gradient-to-r from-gold to-black rounded-md box-border text-white block h-12 text-xl p-[3px] relative no-underline w-28 z-10 hover"
             >
-              <span className="flex items-center bg-main-black-lighter h-full w-full rounded-md justify-center transition-all txtbtn">
+              <span className="flex items-center bg-main-black-lighter h-full w-full rounded justify-center transition-all txtbtn">
                 Gallerie
               </span>
             </Link>

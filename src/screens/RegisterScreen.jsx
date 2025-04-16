@@ -92,7 +92,7 @@ const RegisterScreen = () => {
                       </div>
                       <div className="text-center pt-1 pb-1">
                         <button
-                          className="inline-block px-6 py-2.5 text-black font-medium text-xs leading-tight uppercase bg-gradient-to-r from-gold to-[#ffedd4] rounded shadow-md hover:text-white hover:bg-transparent focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
+                          className="inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase bg-gradient-to-r from-gold to-black rounded shadow-md hover:text-white hover:bg-transparent focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
                           type="submit"
                         >
                           S'inscrire

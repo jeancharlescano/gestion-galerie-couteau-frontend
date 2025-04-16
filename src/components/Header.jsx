@@ -1,14 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useNavigate } from "react-router";
+import {
+  faBars,
+  faXmark,
+  faArrowRightFromBracket,
+} from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
+
 import AuthContext from "../context/authContext";
 import logoNoBg from "../assets/img/logo/Logo V2.png";
-import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 const Header = ({ activeNav }) => {
   const navigate = useNavigate();
-  let { user, logoutUser } = useContext(AuthContext);
+  const { user, logoutUser } = useContext(AuthContext);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
     { label: "Home", to: "/" },
@@ -18,50 +24,108 @@ const Header = ({ activeNav }) => {
   ];
 
   return (
-    <div className="w-full h-20 bg-transparent flex">
-      <div className="w-1/3 flex items-center pl-8">
+    <header className="max-h-20 w-full bg-[#232c33] text-white shadow-md">
+      <div className="mx-auto flex items-center justify-between px-8">
+        {/* Logo */}
         <Link to="/">
-          <img className="object-fill max-h-20" src={logoNoBg} alt="logo" />
+          <img src={logoNoBg} alt="Logo" className="h-18 md:h-16" />
         </Link>
-      </div>
-      <nav className="w-2/3 flex justify-center items-center">
-        <div className="w-full h-full">
-          <ul className="flex content-center items-center justify-between w-full h-full">
-            {navItems.map((item, index) => (
-              <li
-                key={index}
-                className={`relative hover:border-b-2 hover:border-gold  ${
-                  activeNav === index ? "border-b-2 border-gold" : ""
-                }`}
-              >
-                <Link
-                  to={item.to}
-                  className="text-white font-semibold text-xl"
-                  aria-current="page"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+
+        {/* Desktop nav */}
+        <nav className="hidden md:flex gap-48">
+          {navItems.map((item, index) => (
+            <Link
+              key={index}
+              to={item.to}
+              className={`relative text-lg font-medium py-1 
+              ${
+                activeNav === index
+                  ? "border-b-2 border-gold text-white"
+                  : "hover:border-b-2 hover:border-gold"
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* User icon / login-logout */}
+        <div className="hidden md:flex items-center gap-4">
+          {user ? (
+            <FontAwesomeIcon
+              icon={faArrowRightFromBracket}
+              className="h-8 w-8 cursor-pointer hover:text-[#db2b39]"
+              onClick={logoutUser}
+            />
+          ) : (
+            <FontAwesomeIcon
+              icon={faUser}
+              className="text-xl cursor-pointer hover:text-[#db2b39]"
+              onClick={() => navigate("/login")}
+            />
+          )}
         </div>
-      </nav>
-      <div className="w-1/3 flex justify-end items-center pr-8">
-        {user ? (
+
+        {/* Burger menu icon */}
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="md:hidden text-white"
+        >
           <FontAwesomeIcon
-            className="h-8 w-h-8  cursor-pointer text-white hover:text-gold"
-            icon={faArrowRightFromBracket}
-            onClick={logoutUser}
-          ></FontAwesomeIcon>
-        ) : (
-          <FontAwesomeIcon
-            icon={faUser}
-            className="h-8 w-h-8  cursor-pointer text-white hover:text-gold"
-            onClick={() => navigate("/login")}
-          ></FontAwesomeIcon>
-        )}
+            icon={isMobileMenuOpen ? faXmark : faBars}
+            className="h-6 w-6"
+          />
+        </button>
       </div>
-    </div>
+
+      {/* Mobile nav */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden flex flex-col gap-4 px-6 pb-6">
+          {navItems.map((item, index) => (
+            <Link
+              key={index}
+              to={item.to}
+              className={`relative text-lg font-medium py-1 
+              ${
+                activeNav === index
+                  ? "border-b-2 border-gold text-white"
+                  : "hover:border-b-2 hover:border-gold"
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+          <div>
+            {user ? (
+              <button
+                onClick={() => {
+                  logoutUser();
+                  setIsMobileMenuOpen(false);
+                }}
+                className="text-left text-white hover:text-[#db2b39] mt-2"
+              >
+                <FontAwesomeIcon
+                  icon={faArrowRightFromBracket}
+                  className="mr-2"
+                />
+                Déconnexion
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  navigate("/login");
+                  setIsMobileMenuOpen(false);
+                }}
+                className="text-left text-white hover:text-[#db2b39] mt-2"
+              >
+                <FontAwesomeIcon icon={faUser} className="mr-2" />
+                Connexion
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+    </header>
   );
 };
 

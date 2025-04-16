@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
+
 const KnifeCard = ({ knife }) => {
   const navigate = useNavigate();
 
@@ -9,37 +10,22 @@ const KnifeCard = ({ knife }) => {
       onClick={() =>
         navigate(`/gallery/${knife.id}`, { state: { knifeValues: knife } })
       }
-      className="w-11/12 h-[35rem] cursor-pointer flex flex-col justify-center shadow-xl rounded-3xl overflow-hidden  transition duration-500 ease-in-out transform hover:scale-101 hover:shadow-xl"
+      className="w-full max-w-sm sm:max-w-xs md:max-w-sm cursor-pointer flex flex-col justify-between shadow-xl rounded-3xl overflow-hidden bg-[#2e3942] transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl"
     >
-      <div className="h-5/6 bg-red-500 overflow-hidden">
+      <div className="aspect-[4/5] overflow-hidden">
         <img
           src={`data:image/jpeg;base64, ${knife.img}`}
-          alt=""
-          className="object-center object-cover h-full"
+          alt={`Image de ${knife.name}`}
+          className="w-full h-full object-cover"
         />
-        {/* With animation */}
-        {/*<img
-          src={`data:image/jpeg;base64, ${knife.img}`}
-          alt=""
-          className="absolute left-0 h-full w-full p-4 object-contain duration-500 group"
-        />
-        <div className="absolute top-0 -right-full w-2/3 h-full  transition-all duration-1000 ease-out data p-2">
-          <div className="h-full w-full text-white flex flex-col justify-evenly">
-            <span>
-              Lame : {knife.blade_material} de {knife.blade_length} cm
-            </span>
-            <span>
-              Manche : {knife.handle_material} de {knife.handle_length} cm
-            </span>
-          </div>
-        </div> */}
       </div>
-      <div className="py-2 h-1/6 flex items-center p-2 justify-between">
-        <p className="text-2xl text-gray-300 font-bold">
-          {knife.name.toUpperCase()}
+
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 p-4">
+        <p className="text-lg sm:text-xl text-gray-300 font-semibold first-letter:uppercase truncate w-full">
+          {knife.name}
         </p>
         {knife.price && (
-          <p className="texxt-xl text-gray-300 font-semibold">
+          <p className="text-base sm:text-lg text-gray-300 font-medium">
             {knife.price} €
           </p>
         )}

@@ -9,7 +9,7 @@
   --color-main-black-lighter: #364149;
   --color-black-lighter: #262424;
   /* https://coolors.co/232c33-cc2936 */
-  --color-gold: #cc2936;
+  --color-gold: #db2b39;
   /* --color-gold: #af7e39; */
 
   /* Polices personnalisées */
@@ -131,14 +131,14 @@ input[type="number"] {
 }
 
 .corner {
-  background: linear-gradient(to right, #af7e39 5px, transparent 5px) 0 0,
-    linear-gradient(to right, #af7e39 5px, transparent 5px) 0 100%,
-    linear-gradient(to left, #af7e39 5px, transparent 5px) 100% 0,
-    linear-gradient(to left, #af7e39 5px, transparent 5px) 100% 100%,
-    linear-gradient(to bottom, #af7e39 5px, transparent 5px) 0 0,
-    linear-gradient(to bottom, #af7e39 5px, transparent 5px) 100% 0,
-    linear-gradient(to top, #af7e39 5px, transparent 5px) 0 100%,
-    linear-gradient(to top, #af7e39 5px, transparent 5px) 100% 100%;
+  background: linear-gradient(to right, #db2b39 5px, transparent 5px) 0 0,
+    linear-gradient(to right, #db2b39 5px, transparent 5px) 0 100%,
+    linear-gradient(to left, #db2b39 5px, transparent 5px) 100% 0,
+    linear-gradient(to left, #db2b39 5px, transparent 5px) 100% 100%,
+    linear-gradient(to bottom, #db2b39 5px, transparent 5px) 0 0,
+    linear-gradient(to bottom, #db2b39 5px, transparent 5px) 100% 0,
+    linear-gradient(to top, #db2b39 5px, transparent 5px) 0 100%,
+    linear-gradient(to top, #db2b39 5px, transparent 5px) 100% 100%;
 
   background-repeat: no-repeat;
   background-size: 50px 50px;
@@ -146,5 +146,5 @@ input[type="number"] {
 
 .hover:hover .txtbtn {
   background: transparent;
-  color: #000;
+  color: #fff;
 }

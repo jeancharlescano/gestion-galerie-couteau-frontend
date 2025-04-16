@@ -75,10 +75,10 @@ const ContactScreen = () => {
                 </div>
                 <div className="w-full flex items-center justify-center">
                   <button
-                    className="h-[44px] w-1/2 mb-3 p-[3px] relative no-underline bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] rounded-md shadow-md box-border text-xs text-white block  uppercase font-semibold  z-10 hover"
+                    className="h-[44px] w-1/2 mb-3 p-[3px] relative no-underline bg-gradient-to-r from-gold to-black rounded-md shadow-md box-border text-xs text-white block  uppercase font-semibold  z-10 hover"
                     type="submit"
                   >
-                    <span className="flex items-center bg-main-black h-full w-full rounded-md justify-center transition duration-200 ease-in-out txtbtn">
+                    <span className="flex items-center bg-main-black h-full w-full rounded justify-center transition duration-200 ease-in-out txtbtn">
                       envoyer
                     </span>
                   </button>

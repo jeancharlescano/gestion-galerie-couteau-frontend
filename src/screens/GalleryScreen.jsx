@@ -10,7 +10,7 @@ import { faPlus, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import AuthContext from "../context/authContext";
 
 const GalleryScreen = () => {
-  let { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const { data, error } = useSWR(
     `${import.meta.env.VITE_REACT_APP_API_URL}/knife/`,
     getAllKnifes
@@ -20,19 +20,18 @@ const GalleryScreen = () => {
     return (
       <>
         <Header activeNav={1} />
-        <div className=" min-h-screen h-[calc(100vh-56px)] bg-main-black p-4">
-          <div className=" w-full h-full flex justify-center bg-center text-white">
-            <div>Erreur, revenez plus tard !</div>
-          </div>
+        <div className="min-h-screen bg-[#232c33] flex items-center justify-center text-white text-lg">
+          Erreur de chargement, veuillez réessayer plus tard.
         </div>
       </>
     );
+
   if (!data) {
     return (
-      <div className="h-screen overflow-hidden flex items-center justify-center">
+      <div className="h-screen bg-[#232c33] flex items-center justify-center">
         <FontAwesomeIcon
-          className="w-14 h-14 text-white animate-spin"
           icon={faSpinner}
+          className="w-10 h-10 text-white animate-spin"
         />
       </div>
     );
@@ -41,29 +40,24 @@ const GalleryScreen = () => {
   return (
     <>
       <Header activeNav={1} />
-      <div className=" min-h-screen h-auto bg-main-black p-4">
-        <div className="h-24 flex items-center justify-end">
-          {user ? (
-            user.isAdmin === true ? (
-              <Link
-                to="/knife/add"
-                className=" bg-gradient-to-r from-[#AF7E39] to-[#ffedd4] rounded box-border text-white block font-medium p-[2px] mr-4 relative no-underline z-10 hover"
-              >
-                <FontAwesomeIcon
-                  icon={faPlus}
-                  className="flex items-center bg-[#29353D] h-8 w-8 rounded justify-center transition duration-200 ease-in-out txtbtn"
-                />
-              </Link>
-            ) : (
-              <></>
-            )
-          ) : (
-            <></>
-          )}
-        </div>
-        <div className="grid content-start justify-items-center bg-center grid-cols-4 gap-y-16">
+      <div className="min-h-screen bg-[#232c33] px-4 sm:px-6 lg:px-12 py-8">
+        {/* Bouton Ajouter */}
+        {user?.isAdmin && (
+          <div className="flex justify-end mb-6">
+            <Link
+              to="/knife/add"
+              className="flex items-center gap-2 bg-[#db2b39] hover:bg-red-700 text-white font-medium py-2 px-4 rounded shadow transition"
+            >
+              <FontAwesomeIcon icon={faPlus} />
+              <span className="hidden sm:inline">Ajouter un couteau</span>
+            </Link>
+          </div>
+        )}
+
+        {/* Grille responsive */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
           {data.map((knife) => (
-            <KnifeCard key={knife.id} knife={knife}></KnifeCard>
+            <KnifeCard key={knife.id} knife={knife} />
           ))}
         </div>
       </div>
