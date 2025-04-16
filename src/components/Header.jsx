@@ -80,29 +80,25 @@ const Header = ({ activeNav }) => {
 
       {/* Mobile nav */}
       {isMobileMenuOpen && (
-        <div className="md:hidden flex flex-col gap-4 px-6 pb-6">
+        <div className="relative md:hidden w-45 flex flex-col p-6 bg-black/70 left-60 rounded-lg">
           {navItems.map((item, index) => (
             <Link
               key={index}
               to={item.to}
-              className={`relative text-lg font-medium py-1 
-              ${
-                activeNav === index
-                  ? "border-b-2 border-gold text-white"
-                  : "hover:border-b-2 hover:border-gold"
-              }`}
+              className={`text-lg font-medium py-1 z-50
+              ${activeNav === index ? " text-white" : " "}`}
             >
               {item.label}
             </Link>
           ))}
-          <div>
+          <div className="z-50">
             {user ? (
               <button
                 onClick={() => {
                   logoutUser();
                   setIsMobileMenuOpen(false);
                 }}
-                className="text-left text-white hover:text-[#db2b39] mt-2"
+                className="text-left  text-white mt-2"
               >
                 <FontAwesomeIcon
                   icon={faArrowRightFromBracket}
@@ -116,9 +112,9 @@ const Header = ({ activeNav }) => {
                   navigate("/login");
                   setIsMobileMenuOpen(false);
                 }}
-                className="text-left text-white hover:text-[#db2b39] mt-2"
+                className="text-left font-medium  text-white mt-2"
               >
-                <FontAwesomeIcon icon={faUser} className="mr-2" />
+                <FontAwesomeIcon icon={faUser} className="mr-2 text-gold" />
                 Connexion
               </button>
             )}
