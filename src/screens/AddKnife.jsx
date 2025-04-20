@@ -149,13 +149,13 @@ const AddKnife = () => {
             </div>
             <div className="flex flex-col mt-6 w-4/5">
               <label
-                htmlFor="nameKnife"
+                htmlFor="description"
                 className="text-white font-semibold text-md"
               >
                 Nom
               </label>
               <textarea
-                id="nameKnife"
+                id="description"
                 ref={description}
                 placeholder="Description"
                 className="bg-transparent border-b-2 border-white focus:outline-none p-1 text-white min-h-"
@@ -163,13 +163,13 @@ const AddKnife = () => {
             </div>
             <div className="flex justify-between w-4/5 mt-6">
               <label
-                htmlFor="nameKnife"
+                htmlFor="knifePic"
                 className="text-white font-semibold text-md"
               >
                 Image
               </label>
               <input
-                id="nameKnife"
+                id="knifePic"
                 type="file"
                 name="knifePic"
                 onChange={handleFileChange}

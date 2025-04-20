@@ -25,6 +25,38 @@ export const createKnife = async (knife) => {
   }
 };
 
+export const getAllKnifes = (url) => axios.get(url).then((res) => res.data);
+
+export const getKnifeById = async (id) => {
+  try {
+    let result = await axios.get(
+      `${import.meta.env.VITE_REACT_APP_API_URL}/knife/${id}`
+    );
+    return result.data;
+  } catch (error) {
+    console.error("🚀 ~ getKnifeById ~ error:", error);
+  }
+};
+
+export const updateKnife = async (formdata, id) => {
+  try {
+    const token = JSON.parse(localStorage.getItem("authToken"));
+
+    const result = await axios.put(
+      `${import.meta.env.VITE_REACT_APP_API_URL}/knife/update/${id}`,
+      formdata,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token.accessToken}`,
+        },
+      }
+    );
+    return result;
+  } catch (error) {
+    console.error("🚀 ~ updateKnife ~ error:", error);
+  }
+};
 export const deleteKnife = async (id) => {
   const token = JSON.parse(localStorage.getItem("authToken"));
   try {
@@ -42,5 +74,3 @@ export const deleteKnife = async (id) => {
     console.log("🚀 ~ deleteKnife ~ error:", error);
   }
 };
-
-export const getAllKnifes = (url) => axios.get(url).then((res) => res.data);
