@@ -54,13 +54,15 @@ const Header = ({ activeNav }) => {
           {user ? (
             <FontAwesomeIcon
               icon={faArrowRightFromBracket}
-              className="h-8 w-8 cursor-pointer hover:text-[#db2b39]"
+              size="lg"
+              className="cursor-pointer hover:text-gold"
               onClick={logoutUser}
             />
           ) : (
             <FontAwesomeIcon
               icon={faUser}
-              className="text-xl cursor-pointer hover:text-[#db2b39]"
+              size="lg"
+              className="cursor-pointer hover:text-gold"
               onClick={() => navigate("/login")}
             />
           )}

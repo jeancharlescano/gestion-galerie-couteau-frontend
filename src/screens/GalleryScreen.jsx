@@ -28,12 +28,17 @@ const GalleryScreen = () => {
 
   if (!data) {
     return (
-      <div className="h-screen bg-[#232c33] flex items-center justify-center">
-        <FontAwesomeIcon
-          icon={faSpinner}
-          className="w-10 h-10 text-white animate-spin"
-        />
-      </div>
+      <>
+        <Header activeNav={1} />
+        <div className="h-screen bg-[#232c33] flex items-center justify-center">
+          <FontAwesomeIcon
+            icon={faSpinner}
+            size="3x"
+            spin={true}
+            color="#db2b39"
+          />
+        </div>
+      </>
     );
   }
 
@@ -46,10 +51,9 @@ const GalleryScreen = () => {
           <div className="flex justify-end mb-6">
             <Link
               to="/knife/add"
-              className="flex items-center gap-2 bg-[#db2b39] hover:bg-red-700 text-white font-medium py-2 px-4 rounded shadow transition"
+              className="flex items-center gap-2 bg-gradient-to-r from-gold to-black hover:bg-red-700 text-white font-medium py-2 px-2.5 rounded shadow transition"
             >
-              <FontAwesomeIcon icon={faPlus} />
-              <span className="hidden sm:inline">Ajouter un couteau</span>
+              <FontAwesomeIcon icon={faPlus} size="lg" />
             </Link>
           </div>
         )}

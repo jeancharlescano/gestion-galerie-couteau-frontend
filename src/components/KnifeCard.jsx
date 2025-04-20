@@ -14,7 +14,7 @@ const KnifeCard = ({ knife }) => {
     >
       <div className="aspect-[4/5] overflow-hidden">
         <img
-          src={`data:image/jpeg;base64, ${knife.img}`}
+          src={knife.img}
           alt={`Image de ${knife.name}`}
           className="w-full h-full object-cover"
         />

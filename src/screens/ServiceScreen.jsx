@@ -22,7 +22,7 @@ const ServiceScreen = () => {
             <h2 className="font-extrabold text-xl">Hache</h2>
             <p className="">
               Nous proposons des haches de lancer, des hachettes, mais aussi des
-              manches.
+              manches personnalisés.
             </p>
             <Link
               className=" text-gold font-bold hover:underline "
@@ -55,7 +55,8 @@ const ServiceScreen = () => {
           {/* Carte Conseil */}
           <div className="h-96 w-92 bg-[#2e3942] shadow-2xl rounded-3xl p-8 flex flex-col justify-between text-white mx-auto">
             <FontAwesomeIcon
-              className="text-4xl text-gold self-start"
+              className=" text-gold self-start"
+              size="3x"
               icon={faScroll}
             />
             <h2 className="font-extrabold text-xl">Conseil</h2>

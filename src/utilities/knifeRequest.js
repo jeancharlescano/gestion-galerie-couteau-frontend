@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const createKnife = async (knife) => {
   const token = JSON.parse(localStorage.getItem("authToken"));
+
   try {
     const result = await axios.post(
       `${import.meta.env.VITE_REACT_APP_API_URL}/knife/add`,
@@ -9,6 +10,7 @@ export const createKnife = async (knife) => {
       {
         headers: {
           Authorization: "Bearer " + token.accessToken,
+          "Content-Type": "multipart/form-data",
         },
       }
     );
@@ -18,24 +20,23 @@ export const createKnife = async (knife) => {
     }
     return 1;
   } catch (error) {
-    console.log("🚀 ~ file: serverRequest.js:8 ~ createServer ~ error:", error);
+    console.error("🚀 ~ createKnife ~ error:", error);
     return 0;
   }
 };
 
 export const deleteKnife = async (id) => {
-  console.log("🚀 ~ deleteKnife ~ id:", id);
   const token = JSON.parse(localStorage.getItem("authToken"));
-
   try {
     const result = await axios.delete(
       `${import.meta.env.VITE_REACT_APP_API_URL}/knife/delete/${id}`,
       {
         headers: {
-          Authorization: `Bearer $${token.accessToken}`,
+          Authorization: `Bearer ${token.accessToken}`,
         },
       }
     );
+    console.log("🚀 ~ deleteKnife ~ result:", result);
     return result;
   } catch (error) {
     console.log("🚀 ~ deleteKnife ~ error:", error);

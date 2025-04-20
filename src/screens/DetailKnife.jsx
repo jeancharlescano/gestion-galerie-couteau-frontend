@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import Header from "../components/Header";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,9 +12,14 @@ const DetailKnife = () => {
   const [isEdit, setIsEdit] = useState(false);
   const knifeValues = location.state?.knifeValues;
 
+  const navigate = useNavigate();
+
   const delKnife = async () => {
     try {
-      await deleteKnife(knifeValues.id);
+      let result = await deleteKnife(knifeValues.id);
+      if (result.status === 200) {
+        navigate("/gallery");
+      }
     } catch (error) {
       console.error("Error deleting knife:", error);
     }
@@ -27,7 +32,7 @@ const DetailKnife = () => {
         {/* Image */}
         <div className="relative h-[500px] md:h-[600px] flex items-center justify-center bg-[#2e3942]">
           <img
-            src={`data:image/png;base64, ${knifeValues.img}`}
+            src={knifeValues.img}
             alt={knifeValues.name}
             className="max-h-[95%] object-contain rounded"
           />

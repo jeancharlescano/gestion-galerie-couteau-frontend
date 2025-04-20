@@ -15,41 +15,30 @@ const AddKnife = () => {
   const handleMaterial = useRef();
   const handleLenght = useRef();
   const description = useRef();
-  let knifePicB64 = "";
+  const imageFile = useRef(null);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    const reader = new FileReader();
-
-    reader.onloadend = function () {
-      const base64String = reader.result
-        .replace("data:", "")
-        .replace(/^.+,/, "");
-      knifePicB64 = base64String;
-      console.log("🚀 ~ handleFileChange ~ knifePicB64:", knifePicB64);
-      // setImageSrc("data:image/jpeg;base64," + base64String)
-    };
-
-    if (file) {
-      reader.readAsDataURL(file);
-    }
+    imageFile.current = file;
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    const values = {
-      name: name.current.value,
-      description: description.current.value,
-      img: knifePicB64,
-      bladeMaterial: bladeMaterial.current.value,
-      bladeLenght: bladeLenght.current.value,
-      handleMaterial: handleMaterial.current.value,
-      handleLenght: handleLenght.current.value,
-    };
+    const formData = new FormData();
+    formData.append("name", name.current.value);
+    formData.append("description", description.current.value);
+    formData.append("bladeMaterial", bladeMaterial.current.value);
+    formData.append("bladeLenght", bladeLenght.current.value);
+    formData.append("handleMaterial", handleMaterial.current.value);
+    formData.append("handleLenght", handleLenght.current.value);
+
+    if (imageFile.current) {
+      formData.append("knifePic", imageFile.current);
+    }
 
     try {
-      const result = await createKnife(values);
+      const result = await createKnife(formData);
       if (result) navigate("/gallery");
     } catch (error) {
       console.log("🚀 ~ file: AddKnife.jsx:54 ~ onSubmit ~ error:", error);
