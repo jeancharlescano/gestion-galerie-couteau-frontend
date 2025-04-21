@@ -23,7 +23,6 @@ export const AuthProvider = ({ children }) => {
 
   let login = async (e) => {
     e.preventDefault();
-    console.log("form submitted");
     let response = await fetch(
       `${import.meta.env.VITE_REACT_APP_API_URL}/auth/login`,
       {
@@ -58,7 +57,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   const updateToken = async () => {
-    console.log("🚀 ~ updateToken ~ authTokens:", authTokens);
     let response = await fetch(
       `${import.meta.env.VITE_REACT_APP_API_URL}/auth/refresh`,
       {

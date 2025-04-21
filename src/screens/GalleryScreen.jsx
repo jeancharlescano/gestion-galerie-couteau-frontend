@@ -51,9 +51,13 @@ const GalleryScreen = () => {
           <div className="flex justify-end mb-6">
             <Link
               to="/knife/add"
-              className="flex items-center gap-2 bg-gradient-to-r from-gold to-black hover:bg-red-700 text-white font-medium py-2 px-2.5 rounded shadow transition"
+              className="flex items-center gap-2 bg-gradient-to-r from-gold to-black hover:bg-red-700 text-white font-medium p-0.5 rounded shadow transition"
             >
-              <FontAwesomeIcon icon={faPlus} size="lg" />
+              <FontAwesomeIcon
+                className="bg-[#232c33] p-1 hover:bg-transparent"
+                icon={faPlus}
+                size="lg"
+              />
             </Link>
           </div>
         )}

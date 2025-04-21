@@ -32,7 +32,7 @@ const Header = ({ activeNav }) => {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex gap-48">
+        <nav className="hidden md:flex gap-48 md:gap-20">
           {navItems.map((item, index) => (
             <Link
               key={index}

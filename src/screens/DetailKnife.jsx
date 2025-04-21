@@ -200,7 +200,7 @@ const DetailKnife = () => {
                 onClick={() => setIsEdit(!isEdit)}
                 className="bg-gradient-to-r from-gold to-black hover:opacity-80 px-4 py-2 rounded shadow cursor-pointer"
               >
-                <FontAwesomeIcon icon={faPenToSquare} />
+                <FontAwesomeIcon  icon={faPenToSquare} />
               </button>
               <button
                 onClick={delKnife}
