@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css2?family=The+Nautigal:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  /* Couleurs personnalisées */
+  --color-main-black: #232c33;
+  --color-main-black-lighter: #364149;
+  --color-black-lighter: #262424;
+  /* https://coolors.co/232c33-cc2936 */
+  --color-gold: #db2b39;
+  /* --color-gold: #af7e39; */
+
+  /* Polices personnalisées */
+  --font-knife-title: "The Nautigal", cursive;
+
+  /* Images de fond */
+  --background-fire-img: url("/src/assets/img/bg.jpeg");
+
+  /* Animations personnalisées */
+  --animate: slideRight 1s ease forwards;
+  --animate-slide-left: slideLeft 1s ease forwards;
+  --animate-slide-top: slideTop 1s 0.4s ease forwards;
+  --animate-zoom-in: zoomIn 1s ease forwards;
+
+  /* Keyframes personnalisés */
+  @keyframes slideRight {
+    0% {
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slideLeft {
+    0% {
+      transform: translateX(100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slideTop {
+    0% {
+      transform: translateY(-100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes zoomIn {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #232c33;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox support */
+}
+
+.font {
+  font-family: "Alex Brush", cursive;
+}
+
+.avatar {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 0;
+}
+.avatar:before {
+  width: 86px;
+  aspect-ratio: 1;
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  padding: 3px;
+  border-radius: 100%;
+  background: linear-gradient(to right, #af7e39, #ffedd4);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.display:hover .group {
+  transform: scale(0.5) rotate(-90deg);
+  left: -33%;
+}
+
+.display:hover .data {
+  right: 0;
+}
+
+.corner {
+  background: linear-gradient(to right, #db2b39 5px, transparent 5px) 0 0,
+    linear-gradient(to right, #db2b39 5px, transparent 5px) 0 100%,
+    linear-gradient(to left, #db2b39 5px, transparent 5px) 100% 0,
+    linear-gradient(to left, #db2b39 5px, transparent 5px) 100% 100%,
+    linear-gradient(to bottom, #db2b39 5px, transparent 5px) 0 0,
+    linear-gradient(to bottom, #db2b39 5px, transparent 5px) 100% 0,
+    linear-gradient(to top, #db2b39 5px, transparent 5px) 0 100%,
+    linear-gradient(to top, #db2b39 5px, transparent 5px) 100% 100%;
+
+  background-repeat: no-repeat;
+  background-size: 50px 50px;
+}
+
+@media (max-width: 425px) {
+  .corner {
+    background: linear-gradient(to right, #db2b39 2.5px, transparent 2.5px) 0 0,
+      linear-gradient(to right, #db2b39 2.5px, transparent 2.5px) 0 100%,
+      linear-gradient(to left, #db2b39 2.5px, transparent 2.5px) 100% 0,
+      linear-gradient(to left, #db2b39 2.5px, transparent 2.5px) 100% 100%,
+      linear-gradient(to bottom, #db2b39 2.5px, transparent 2.5px) 0 0,
+      linear-gradient(to bottom, #db2b39 2.5px, transparent 2.5px) 100% 0,
+      linear-gradient(to top, #db2b39 2.5px, transparent 2.5px) 0 100%,
+      linear-gradient(to top, #db2b39 2.5px, transparent 2.5px) 100% 100%;
+    background-repeat: no-repeat;
+    background-size: 50px 50px;
+  }
+}
+
+.hover:hover .txtbtn {
+  background: transparent;
+  color: #fff;
+}
+
+/* RESET CSS */
