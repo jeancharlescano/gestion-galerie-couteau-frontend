@@ -1,29 +1,37 @@
+'use client'
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import React, { useRef } from "react";
-import { useNavigate } from "react-router";
+import { useRouter } from "next/navigation";
 
-import Header from "../components/Header";
-import { createKnife } from "../utilities/knifeRequest";
+import Header from "@/components/Header";
+import { createKnife } from "@/utilities/knifeRequest";
 
-const AddKnife = () => {
-  // const [imageSrc, setImageSrc] = useState("");
-  const navigate = useNavigate();
-  const name = useRef();
-  const bladeMaterial = useRef();
-  const bladeLenght = useRef();
-  const handleMaterial = useRef();
-  const handleLenght = useRef();
-  const description = useRef();
-  const imageFile = useRef(null);
+const AddKnifePage = () => {
+  const router = useRouter();
+  const name = useRef<HTMLInputElement>(null);
+  const bladeMaterial = useRef<HTMLInputElement>(null);
+  const bladeLenght = useRef<HTMLInputElement>(null);
+  const handleMaterial = useRef<HTMLInputElement>(null);
+  const handleLenght = useRef<HTMLInputElement>(null);
+  const description = useRef<HTMLTextAreaElement>(null);
+  const imageFile = useRef<HTMLInputElement>(null);
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    imageFile.current = file;
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (imageFile.current) {
+      imageFile.current.files = e.target.files;
+    }
   };
 
-  const onSubmit = async (e) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!name.current || !description.current || !bladeMaterial.current || 
+        !bladeLenght.current || !handleMaterial.current || !handleLenght.current) {
+      return;
+    }
 
     const formData = new FormData();
     formData.append("name", name.current.value);
@@ -33,15 +41,15 @@ const AddKnife = () => {
     formData.append("handleMaterial", handleMaterial.current.value);
     formData.append("handleLenght", handleLenght.current.value);
 
-    if (imageFile.current) {
-      formData.append("knifePic", imageFile.current);
+    if (imageFile.current?.files?.[0]) {
+      formData.append("knifePic", imageFile.current.files[0]);
     }
 
     try {
       const result = await createKnife(formData);
-      if (result) navigate("/gallery");
+      if (result) router.push("/gallery");
     } catch (error) {
-      console.log("🚀 ~ file: AddKnife.jsx:54 ~ onSubmit ~ error:", error);
+      console.log("Error creating knife:", error);
     }
   };
 
@@ -54,7 +62,7 @@ const AddKnife = () => {
           <FontAwesomeIcon
             icon={faCircleArrowLeft}
             style={{ color: "#AF7E39" }}
-            onClick={() => navigate("/gallery")}
+            onClick={() => router.push("/gallery")}
             className="w-10 h-10 cursor-pointer hover:scale-110 transition-all"
           />
         </div>
@@ -107,7 +115,6 @@ const AddKnife = () => {
                   ref={bladeLenght}
                   type="number"
                   step="0.01"
-                  pattern="\d+(\.\d{0,2})?"
                   className="bg-transparent border-b-2 border-white focus:outline-none p-1 text-white"
                   placeholder="Taille en cm"
                 />
@@ -141,7 +148,6 @@ const AddKnife = () => {
                   ref={handleLenght}
                   type="number"
                   step="0.01"
-                  pattern="\d+(\.\d{0,2})?"
                   className="bg-transparent border-b-2 border-white focus:outline-none p-1 text-white "
                   placeholder="Taille en cm"
                 />
@@ -152,7 +158,7 @@ const AddKnife = () => {
                 htmlFor="description"
                 className="text-white font-semibold text-md"
               >
-                Nom
+                Description
               </label>
               <textarea
                 id="description"
@@ -173,6 +179,7 @@ const AddKnife = () => {
                 type="file"
                 name="knifePic"
                 onChange={handleFileChange}
+                ref={imageFile}
                 className="bg-transparent border-white focus:outline-none p-0 text-white"
               />
             </div>
@@ -189,4 +196,4 @@ const AddKnife = () => {
   );
 };
 
-export default AddKnife;
+export default AddKnifePage;

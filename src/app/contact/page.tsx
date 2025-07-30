@@ -1,13 +1,22 @@
-import React, { useRef } from "react";
-import Header from "../components/Header";
-import { sendMail } from "../utilities/mailRequest.js";
-const ContactScreen = () => {
-  const firstname = useRef();
-  const lastname = useRef();
-  const email = useRef();
-  const message = useRef();
+'use client'
 
-  const sendEmail = async () => {
+import React, { useRef } from "react";
+import Header from "@/components/Header";
+import { sendMail } from "@/utilities/mailRequest";
+
+const ContactPage = () => {
+  const firstname = useRef<HTMLInputElement>(null);
+  const lastname = useRef<HTMLInputElement>(null);
+  const email = useRef<HTMLInputElement>(null);
+  const message = useRef<HTMLTextAreaElement>(null);
+
+  const sendEmail = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!firstname.current || !lastname.current || !email.current || !message.current) {
+      return;
+    }
+
     const data = {
       firstname: firstname.current.value,
       lastname: lastname.current.value,
@@ -17,6 +26,7 @@ const ContactScreen = () => {
 
     await sendMail(data);
   };
+
   return (
     <>
       <Header activeNav={3} />
@@ -85,7 +95,7 @@ const ContactScreen = () => {
                   <textarea
                     placeholder="Votre message"
                     ref={message}
-                    rows="4"
+                    rows={4}
                     className="w-full text-white text-sm lg:text-lg border-none bg-transparent outline-none placeholder:italic focus:outline-none"
                   />
                 </div>
@@ -108,4 +118,4 @@ const ContactScreen = () => {
   );
 };
 
-export default ContactScreen;
+export default ContactPage;

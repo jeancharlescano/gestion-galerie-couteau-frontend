@@ -1,11 +1,14 @@
+'use client'
+
 import React, { useContext } from "react";
-import { Link } from "react-router";
+import Link from "next/link";
+import Image from "next/image";
 
-import logoNOBg from "../assets/img/logo/Logo V2.png";
-import AuthContext from "../context/authContext";
+import logoNOBg from "@/assets/img/logo/Logo V2.png";
+import AuthContext from "@/context/authContext";
 
-const LoginScreen = () => {
-  let { loginUser } = useContext(AuthContext);
+const LoginPage = () => {
+  const { loginUser } = useContext(AuthContext);
 
   return (
     <div className="bg-main-black first-line:h-screen w-screen justify-center items-center flex absolute">
@@ -17,7 +20,7 @@ const LoginScreen = () => {
                 <div className="px-4 md:px-0">
                   <div className="md:p-12 md:mx-6">
                     <div className="text-center">
-                      <img
+                      <Image
                         className="mx-auto w-48 "
                         src={logoNOBg}
                         alt="logo"
@@ -62,7 +65,7 @@ const LoginScreen = () => {
                           Pas encore de compte ?
                         </p>
                         <Link
-                          to="/register"
+                          href="/register"
                           className="text-gold text-md hover:scale-105"
                         >
                           S'inscrire
@@ -80,4 +83,4 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default LoginPage;

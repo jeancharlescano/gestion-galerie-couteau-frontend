@@ -1,19 +1,27 @@
+'use client'
+
 import React, { useRef } from "react";
+import Image from "next/image";
 
-import logoNOBg from "../assets/img/logo/Logo V2.png";
-import { Link, useNavigate } from "react-router";
-import { register } from "../utilities/userRequest";
+import logoNOBg from "@/assets/img/logo/Logo V2.png";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { register } from "@/utilities/userRequest";
 
-const RegisterScreen = () => {
-  const navigate = useNavigate();
+const RegisterPage = () => {
+  const router = useRouter();
 
-  const firstname = useRef();
-  const lastname = useRef();
-  const email = useRef();
-  const password = useRef();
+  const firstname = useRef<HTMLInputElement>(null);
+  const lastname = useRef<HTMLInputElement>(null);
+  const email = useRef<HTMLInputElement>(null);
+  const password = useRef<HTMLInputElement>(null);
 
-  const registerUser = async (e) => {
+  const registerUser = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!firstname.current || !lastname.current || !email.current || !password.current) {
+      return;
+    }
 
     const newUserData = {
       firstname: firstname.current.value,
@@ -25,10 +33,10 @@ const RegisterScreen = () => {
     try {
       const result = await register(newUserData);
       if (result === 200) {
-        navigate("/login");
+        router.push("/login");
       }
     } catch (error) {
-      console.log("🚀 ~ registerUser ~ error:", error);
+      console.log("Register error:", error);
     }
   };
 
@@ -42,7 +50,7 @@ const RegisterScreen = () => {
                 <div className="px-4 md:px-0">
                   <div className="md:p-8">
                     <div className="text-center">
-                      <img
+                      <Image
                         className="mx-auto w-24 "
                         src={logoNOBg}
                         alt="logo"
@@ -101,7 +109,7 @@ const RegisterScreen = () => {
                       <div className="flex flex-col items-center justify-between pb-6 lg:pb-0">
                         <p className="mb-2 text-white">Déjè membre ?</p>
                         <Link
-                          to="/login"
+                          href="/login"
                           className="text-gold text-md hover:scale-105"
                         >
                           Se connecter
@@ -119,4 +127,4 @@ const RegisterScreen = () => {
   );
 };
 
-export default RegisterScreen;
+export default RegisterPage;

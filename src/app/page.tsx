@@ -1,20 +1,23 @@
+'use client'
+
 import React, { useEffect, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
-import ornement from "../assets/img/logo/Logo ornement V2.png";
-import knife from "../assets/img/logo/Logo couteau V2.png";
-import background from "../assets/img/background/background.png";
-import smokeImg from "../assets/img/background/Fumee.png";
-import bacTrempe from "../assets/img/background/Front.png";
-import forging from "../assets/img/forging.jpeg";
-import daozi from "../assets/img/knifes/machoir.jpg";
-import chief from "../assets/img/knifes/chief.jpg";
-import bushcraft from "../assets/img/knifes/bushcraft.png";
-import hache from "../assets/img/knifes/hache.jpg";
-import { Link } from "react-router";
+import ornement from "@/assets/img/logo/Logo ornement V2.png";
+import knife from "@/assets/img/logo/Logo couteau V2.png";
+import background from "@/assets/img/background/background.png";
+import smokeImg from "@/assets/img/background/Fumee.png";
+import bacTrempe from "@/assets/img/background/Front.png";
+import forging from "@/assets/img/forging.jpeg";
+import daozi from "@/assets/img/knifes/machoir.jpg";
+import chief from "@/assets/img/knifes/chief.jpg";
+import bushcraft from "@/assets/img/knifes/bushcraft.png";
+import hache from "@/assets/img/knifes/hache.jpg";
 
-const HomeScreen = () => {
-  const logo = useRef();
-  const smoke = useRef();
+const HomePage = () => {
+  const logo = useRef<HTMLImageElement>(null);
+  const smoke = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,30 +45,33 @@ const HomeScreen = () => {
   return (
     <>
       <section className="relative h-screen bg-main-black overflow-hidden flex justify-center items-center ">
-        <img
+        <Image
           src={background}
           className="absolute inset-0 object-cover z-0"
           alt="background"
+          fill
         />
-        <img
+        <Image
           ref={smoke}
           src={smokeImg}
           className="absolute inset-0 object-cover z-20"
           alt="background"
+          fill
         />
-        <img
+        <Image
           src={bacTrempe}
           className="absolute inset-0 object-cover z-30"
           alt="background"
+          fill
         />
         <div className="absolute top-40 flex flex-col items-center">
           <p className=" font text-white font-medium text-7xl tracking-widest">
             Lame De Tony
           </p>
           <div className="relative">
-            <img className="absolute h-72" src={ornement} alt="logo" />
-            <img
-              className=" relative h-72 z-20"
+            <Image className="absolute h-72 w-auto" src={ornement} alt="logo" />
+            <Image
+              className=" relative h-72 w-auto z-20"
               ref={logo}
               src={knife}
               alt="logo"
@@ -88,13 +94,13 @@ const HomeScreen = () => {
           </p>
           <div className="h-[25rem] w-[25rem] bg-gradient-to-r from-gold to-black rounded-full flex items-center justify-center opacity-0 anim-delay animate-slide-top">
             <div className="h-96 w-96 rounded-full flex justify-center items-center overflow-hidden ">
-              <img src={forging} alt="toto" />
+              <Image src={forging} alt="forging" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* GALlERIE */}
+      {/* GALLERIE */}
       <section
         id="gallery"
         className="flex items-center px-[15%] py-[5%] h-screen bg-main-black-lighter "
@@ -106,7 +112,7 @@ const HomeScreen = () => {
                 id="knifes"
                 className=" w-1/2 h-full mb-1 mr-1 overflow-hidden rounded-lg bg-white"
               >
-                <img
+                <Image
                   className="w-full h-full object-contain"
                   src={daozi}
                   alt="daozi"
@@ -116,7 +122,7 @@ const HomeScreen = () => {
                 id="knifes"
                 className=" w-1/2 h-full mb-1 ml-1 overflow-hidden rounded-lg bg-white"
               >
-                <img
+                <Image
                   className="w-full h-full object-contain"
                   src={bushcraft}
                   alt="bushcraft"
@@ -128,20 +134,20 @@ const HomeScreen = () => {
                 id="knifes"
                 className=" w-1/2 h-full mt-1 mr-1 overflow-hidden rounded-lg bg-white"
               >
-                <img
+                <Image
                   className="w-full h-full object-contain"
                   src={chief}
-                  alt="daozi"
+                  alt="chief"
                 />
               </div>
               <div
                 id="knifes"
                 className=" w-1/2 h-full mt-1 ml-1 overflow-hidden rounded-lg bg-white"
               >
-                <img
+                <Image
                   className="w-full h-full object-contain"
                   src={hache}
-                  alt="daozi"
+                  alt="hache"
                 />
               </div>
             </div>
@@ -154,7 +160,7 @@ const HomeScreen = () => {
               nesciunt quidem quasi!
             </p>
             <Link
-              to="/gallery"
+              href="/gallery"
               className=" bg-gradient-to-r from-gold to-black rounded-md box-border text-white block h-12 text-xl p-[3px] relative no-underline w-28 z-10 hover"
             >
               <span className="flex items-center bg-main-black-lighter h-full w-full rounded justify-center transition-all txtbtn">
@@ -168,4 +174,4 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+export default HomePage;

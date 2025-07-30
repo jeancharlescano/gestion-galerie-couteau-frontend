@@ -1,6 +1,8 @@
-import React, { useContext, useState, useRef } from "react";
-import { useLocation, useNavigate } from "react-router";
-import Header from "../components/Header";
+'use client'
+
+import React, { useContext, useState, useRef, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import Header from "@/components/Header";
 import {
   faTrash,
   faPenToSquare,
@@ -12,31 +14,59 @@ import {
   deleteKnife,
   updateKnife,
   getKnifeById,
-} from "../utilities/knifeRequest";
-import AuthContext from "../context/authContext";
+} from "@/utilities/knifeRequest";
+import AuthContext from "@/context/authContext";
 
-const DetailKnife = () => {
+interface KnifeData {
+  id: string;
+  name: string;
+  img: string;
+  blade_material: string;
+  blade_length: number;
+  handle_material: string;
+  handle_length: number;
+  description: string;
+  price?: number;
+}
+
+const DetailKnifePage = ({ params }: { params: { id: string } }) => {
   const { user } = useContext(AuthContext);
-  const location = useLocation();
-  const [knifeValues, setKnifeValues] = useState(location.state?.knifeValues);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  
+  const [knifeValues, setKnifeValues] = useState<KnifeData | null>(null);
   const [isEdit, setIsEdit] = useState(false);
-  const [previewImg, setPreviewImg] = useState(knifeValues.img);
+  const [previewImg, setPreviewImg] = useState("");
 
-  const name = useRef();
-  const bladeMaterial = useRef();
-  const bladeLenght = useRef();
-  const handleMaterial = useRef();
-  const handleLenght = useRef();
-  const description = useRef();
-  const imageFile = useRef(null);
+  const name = useRef<HTMLInputElement>(null);
+  const bladeMaterial = useRef<HTMLInputElement>(null);
+  const bladeLenght = useRef<HTMLInputElement>(null);
+  const handleMaterial = useRef<HTMLInputElement>(null);
+  const handleLenght = useRef<HTMLInputElement>(null);
+  const description = useRef<HTMLTextAreaElement>(null);
+  const imageFile = useRef<HTMLInputElement>(null);
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    const fetchKnife = async () => {
+      try {
+        const knife = await getKnifeById(params.id);
+        setKnifeValues(knife);
+        setPreviewImg(knife.img);
+      } catch (error) {
+        console.error("Error fetching knife:", error);
+      }
+    };
+
+    fetchKnife();
+  }, [params.id]);
 
   const delKnife = async () => {
+    if (!knifeValues) return;
+    
     try {
       let result = await deleteKnife(knifeValues.id);
-      if (result.status === 200) {
-        navigate("/gallery");
+      if (result?.status === 200) {
+        router.push("/gallery");
       }
     } catch (error) {
       console.error("Error deleting knife:", error);
@@ -44,10 +74,13 @@ const DetailKnife = () => {
   };
 
   const updateImg = () => {
-    imageFile.current.click();
+    imageFile.current?.click();
   };
 
   const putKnife = async () => {
+    if (!knifeValues || !name.current || !description.current || !bladeMaterial.current || 
+        !bladeLenght.current || !handleMaterial.current || !handleLenght.current) return;
+
     const formData = new FormData();
 
     formData.append("name", name.current.value);
@@ -57,24 +90,36 @@ const DetailKnife = () => {
     formData.append("handleMaterial", handleMaterial.current.value);
     formData.append("handleLenght", handleLenght.current.value);
 
-    if (imageFile.current) {
+    if (imageFile.current?.files?.[0]) {
       formData.append("knifePic", imageFile.current.files[0]);
     }
+    
     try {
       const result = await updateKnife(formData, knifeValues.id);
-      if (result.status === 200) {
+      if (result?.status === 200) {
         try {
           const updatedKnife = await getKnifeById(knifeValues.id);
           setKnifeValues(updatedKnife);
           setIsEdit(false);
         } catch (error) {
-          console.error("🚀 ~ putKnife ~ error:", error);
+          console.error("Error fetching updated knife:", error);
         }
       }
     } catch (error) {
-      console.error("🚀 ~ updateKnife ~ error:", error);
+      console.error("Error updating knife:", error);
     }
   };
+
+  if (!knifeValues) {
+    return (
+      <>
+        <Header activeNav={1} />
+        <div className="min-h-screen bg-[#232c33] flex items-center justify-center text-white">
+          Chargement...
+        </div>
+      </>
+    );
+  }
 
   return isEdit ? (
     <>
@@ -94,11 +139,11 @@ const DetailKnife = () => {
             style={{ display: "none" }}
             ref={imageFile}
             onChange={(e) => {
-              const file = e.target.files[0];
+              const file = e.target.files?.[0];
               if (file) {
                 const reader = new FileReader();
                 reader.onload = () => {
-                  setPreviewImg(reader.result);
+                  setPreviewImg(reader.result as string);
                 };
                 reader.readAsDataURL(file);
               }
@@ -145,7 +190,7 @@ const DetailKnife = () => {
             <InputUpdate
               id="bladeLenght"
               ref={bladeLenght}
-              knifeValue={knifeValues.blade_length}
+              knifeValue={knifeValues.blade_length.toString()}
               type="number"
               placeholder="Taille en cm"
             />
@@ -159,7 +204,7 @@ const DetailKnife = () => {
             <InputUpdate
               id="handleLenght"
               ref={handleLenght}
-              knifeValue={knifeValues.handle_length}
+              knifeValue={knifeValues.handle_length.toString()}
               type="number"
               placeholder="Taille en cm"
             />
@@ -200,7 +245,7 @@ const DetailKnife = () => {
                 onClick={() => setIsEdit(!isEdit)}
                 className="bg-gradient-to-r from-gold to-black hover:opacity-80 px-4 py-2 rounded shadow cursor-pointer"
               >
-                <FontAwesomeIcon  icon={faPenToSquare} />
+                <FontAwesomeIcon icon={faPenToSquare} />
               </button>
               <button
                 onClick={delKnife}
@@ -248,14 +293,19 @@ const DetailKnife = () => {
   );
 };
 
-const InfoItem = ({ label, value }) => (
+const InfoItem = ({ label, value }: { label: string; value: string }) => (
   <div>
     <h3 className="text-lg md:text-xl font-semibold text-gold">{label}</h3>
     <p className="text-base text-gray-300">{value}</p>
   </div>
 );
 
-const InputUpdate = ({ id, ref, placeholder, type, knifeValue }) => (
+const InputUpdate = React.forwardRef<HTMLInputElement, {
+  id: string;
+  placeholder: string;
+  type: string;
+  knifeValue: string;
+}>(({ id, placeholder, type, knifeValue }, ref) => (
   <input
     id={id}
     type={type}
@@ -264,6 +314,8 @@ const InputUpdate = ({ id, ref, placeholder, type, knifeValue }) => (
     placeholder={placeholder}
     className="bg-transparent border-b-2 border-gold focus:outline-none p-1 text-white w-1/2"
   />
-);
+));
 
-export default DetailKnife;
+InputUpdate.displayName = 'InputUpdate';
+
+export default DetailKnifePage;

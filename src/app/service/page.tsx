@@ -1,10 +1,11 @@
 import React from "react";
-import Header from "../components/Header";
+import Header from "@/components/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router";
+import Link from "next/link";
 import { faArrowRight, faScroll } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
 
-const ServiceScreen = () => {
+const ServicePage = () => {
   return (
     <>
       <Header activeNav={2} />
@@ -13,9 +14,9 @@ const ServiceScreen = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-y-6 container mx-auto ">
           {/* Carte Hache */}
           <div className="h-96 w-92 bg-[#2e3942] shadow-2xl rounded-3xl p-8 flex flex-col justify-between text-white mx-auto">
-            <img
-              width="50"
-              height="50"
+            <Image
+              width={50}
+              height={50}
               src="https://img.icons8.com/ios/50/db2b39/small-axe.png"
               alt="small-axe"
             />
@@ -26,7 +27,7 @@ const ServiceScreen = () => {
             </p>
             <Link
               className=" text-gold font-bold hover:underline "
-              to="/contact"
+              href="/contact"
             >
               Contactez-nous <FontAwesomeIcon icon={faArrowRight} />
             </Link>
@@ -34,8 +35,10 @@ const ServiceScreen = () => {
 
           {/* Carte Couteau */}
           <div className="h-96 w-92 bg-gradient-to-b from-[#db2b39] to-black shadow-2xl rounded-3xl p-8 flex flex-col justify-between text-white mx-auto">
-            <img
+            <Image
               className="w-16 h-16"
+              width={48}
+              height={48}
               src="https://img.icons8.com/material-outlined/48/232C33/knife.png"
               alt="knife"
             />
@@ -46,7 +49,7 @@ const ServiceScreen = () => {
             </p>
             <Link
               className="text-white font-bold hover:underline "
-              to="/contact"
+              href="/contact"
             >
               Contactez-nous <FontAwesomeIcon icon={faArrowRight} />
             </Link>
@@ -66,7 +69,7 @@ const ServiceScreen = () => {
             </p>
             <Link
               className="text-gold font-bold hover:underline "
-              to="/contact"
+              href="/contact"
             >
               Contactez-nous <FontAwesomeIcon icon={faArrowRight} />
             </Link>
@@ -77,4 +80,4 @@ const ServiceScreen = () => {
   );
 };
 
-export default ServiceScreen;
+export default ServicePage;

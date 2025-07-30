@@ -1,18 +1,20 @@
+'use client'
+
 import React, { useContext } from "react";
-import { Link } from "react-router";
+import Link from "next/link";
 import useSWR from "swr";
 
-import KnifeCard from "../components/KnifeCard";
-import Header from "../components/Header";
-import { getAllKnifes } from "../utilities/knifeRequest";
+import KnifeCard from "@/components/KnifeCard";
+import Header from "@/components/Header";
+import { getAllKnifes } from "@/utilities/knifeRequest";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faSpinner } from "@fortawesome/free-solid-svg-icons";
-import AuthContext from "../context/authContext";
+import AuthContext from "@/context/authContext";
 
-const GalleryScreen = () => {
+const GalleryPage = () => {
   const { user } = useContext(AuthContext);
   const { data, error } = useSWR(
-    `${import.meta.env.VITE_REACT_APP_API_URL}/knife/`,
+    `${process.env.NEXT_PUBLIC_API_URL || process.env.VITE_REACT_APP_API_URL}/knife/`,
     getAllKnifes
   );
 
@@ -50,7 +52,7 @@ const GalleryScreen = () => {
         {user?.isAdmin && (
           <div className="flex justify-end mb-6">
             <Link
-              to="/knife/add"
+              href="/knife/add"
               className="flex items-center gap-2 bg-gradient-to-r from-gold to-black hover:bg-red-700 text-white font-medium p-0.5 rounded shadow transition"
             >
               <FontAwesomeIcon
@@ -64,7 +66,7 @@ const GalleryScreen = () => {
 
         {/* Grille responsive */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
-          {data.map((knife) => (
+          {data.map((knife: any) => (
             <KnifeCard key={knife.id} knife={knife} />
           ))}
         </div>
@@ -73,4 +75,4 @@ const GalleryScreen = () => {
   );
 };
 
-export default GalleryScreen;
+export default GalleryPage;
